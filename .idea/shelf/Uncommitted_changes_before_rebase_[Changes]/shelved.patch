@@ -1,0 +1,9 @@
+Index: README.md
+===================================================================
+diff --git a/README.md b/README.md
+deleted file mode 100644
+--- a/README.md	(revision 4f82354f9e4477808aaa644fe1fe1d48615110df)
++++ /dev/null	(revision 4f82354f9e4477808aaa644fe1fe1d48615110df)
+@@ -1,2 +0,0 @@
+-# PyBlockCode
+-it allows new coders to learn basics of python easier. 
