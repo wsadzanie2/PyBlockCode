@@ -130,13 +130,13 @@ class BlockSpawner:
 class RunBlock:
     def __init__(self, x, y, width=150, height=50, color=None):
         blocks.append(self)
-        self.text_input = TextInput(font, pygame.Rect(x, y, width, height), color)
+        if color is None:
+            color = random_color()
+        self.text_input = TextInput(font, pygame.Rect(x, y, width, height), color, text='default.py')
         self.x = x
         self.y = y
         self.width = width
         self.height = height
-        if color is None:
-            color = random_color()
         self.color = color
         self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
         self.child = None
@@ -160,17 +160,20 @@ class RunBlock:
         pygame.draw.rect(screen, self.color, self.rect)
         pygame.draw.rect(screen, (0, 0, 0), self.button_rect)
         pygame.draw.rect(screen, (0, 255, 0), rect_border(self.button_rect, -2))
+        self.text_input.draw(screen)
 
     def update_values(self):
         self.button_rect.center = self.rect.center
         self.button_rect.left = self.rect.left + 10
+        self.text_input.rect.center = self.rect.center
+        self.text_input.rect.x = self.rect.x + 50
 
     def if_parent_selected(self):
         return self.selected
 
     def compile(self):
         current = self
-        with open('your_code.txt', 'w') as file:
+        with open(self.text_input.text, 'w') as file:
             while current.child is not None:
                 if current.child.arguments > 0:
                     file.write(current.child.command + '(' + current.child.text_input.text.strip(',') + ')')
@@ -182,7 +185,11 @@ class RunBlock:
 
     def update(self, event):
         global selected
+        if selected == self:
+            self.text_input.update(event)
         if event.type == MOUSEBUTTONDOWN:
+            if self.text_input.rect.collidepoint(pygame.mouse.get_pos()):
+                return
             if self.button_rect.collidepoint(pygame.mouse.get_pos()):
                 return self.compile()
             if self.rect.collidepoint(pygame.mouse.get_pos()):
@@ -202,10 +209,10 @@ class RunBlock:
 
 
 class TextInput:
-    def __init__(self, font, rect, background=(0, 0, 0)):
+    def __init__(self, font, rect, background=(0, 0, 0), text=''):
         self.background = background
         self.selected = False
-        self.text = ''
+        self.text = text
         self.font = font
         self.rect = rect
         self.text_surface = self.font.render(self.text, True, (255, 255, 255))
