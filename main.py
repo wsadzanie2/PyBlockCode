@@ -14,9 +14,9 @@ running = True
 selected = None
 
 def load_blocks(blocks):
-    RunBlockSpawner(20, 20)
     for index, block in enumerate(blocks):
         BlockSpawner(20, (index * 60) + 80, color=block['color'], text=block['text'], command=block['command'], arguments=block['arguments'])
+    RunBlockSpawner(20, 20)
 
 
 def reverse_color(color):
@@ -54,6 +54,9 @@ class RunBlockSpawner:
         self.button_rect = pygame.Rect(25, 25, 25, 25)
         self.button_rect.midleft = self.rect.midleft
         self.button_rect.left = self.rect.left + 10
+    @staticmethod
+    def is_parent(_):
+        return False
 
     @staticmethod
     def if_parent_selected():
@@ -72,15 +75,16 @@ class Scroll:
     def __init__(self, x, y, end_x, end_y):
         self.x = x
         self.y = y
+        self.speed = 10
         self.end_x = end_x
-        self.end_y = screen.get_height() - end_y
+        self.end_y = end_y
         self.scroll_progress = 0
     def draw(self):
         pygame.draw.line(screen, (0, 0, 0), (self.x, self.y), (self.end_x, self.end_y), 3)
-        pygame.draw.circle(screen, (255, 255, 255), (self.x, self.scroll_progress), 3)
+        pygame.draw.circle(screen, (255, 255, 255), (self.x, self.scroll_progress + screen.get_height() - 20), 3)
     def update(self, event):
         if event.type == MOUSEWHEEL:
-            self.scroll_progress -= event.y
+            self.scroll_progress -= event.y * self.speed
 
 
 
@@ -126,6 +130,7 @@ class BlockSpawner:
 class RunBlock:
     def __init__(self, x, y, width=150, height=50, color=None):
         blocks.append(self)
+        self.text_input = TextInput(font, pygame.Rect(x, y, width, height), color)
         self.x = x
         self.y = y
         self.width = width
@@ -176,11 +181,13 @@ class RunBlock:
                 current = current.child
 
     def update(self, event):
+        global selected
         if event.type == MOUSEBUTTONDOWN:
             if self.button_rect.collidepoint(pygame.mouse.get_pos()):
                 return self.compile()
             if self.rect.collidepoint(pygame.mouse.get_pos()):
                 self.selected = True
+                selected = self
         if event.type == MOUSEBUTTONUP:
             self.selected = False
         if self.selected:
@@ -233,7 +240,7 @@ class TextInput:
 
 blocks = []
 text_box = TextInput(font, pygame.Rect(0, 0, 800, 600))
-scroll = Scroll(5, 0, 5, 5)
+scroll = Scroll(5, 0, 5, 2000)
 
 
 class CodeBlock:
@@ -268,6 +275,8 @@ class CodeBlock:
         if self.text_input is not None:
             self.text_input.draw(screen)
         screen.blit(self.text_surface, self.text_rect)
+    def copy(self):
+        return self
     def is_parent(self, parent):
         if parent == self:
             return True
@@ -278,7 +287,7 @@ class CodeBlock:
         for block in blocks:
             if block == self:
                 continue
-            if block.rect.collidepoint(pygame.mouse.get_pos()):
+            if block.rect.collidepoint(pygame.mouse.get_pos()) and (isinstance(block, CodeBlock) or isinstance(block, RunBlock)):
                 if not block.is_parent(self):
                     self.rect.midtop = block.rect.midbottom
                     block.child = self
@@ -340,6 +349,12 @@ while running:
             block.update(event)
         if event.type == QUIT:
             running = False
+        if event.type == KEYDOWN:
+            if event.key == K_DELETE:
+                if selected is not None:
+                    if selected in blocks:
+                        blocks.remove(selected)
+
         scroll.update(event)
     for block in blocks:
         block.draw()

@@ -1,5 +1,6 @@
 BLOCKS = [
-    {'color': None, 'text': "Default Block", 'command': 'print', 'arguments': 0},
+    {'color': None, 'text': "Print", 'command': 'print', 'arguments': 1},
+    {'color': None, 'text': "Spacer", 'command': '', 'arguments': 0},
     {'color': None, 'text': "Add", 'command': '(lambda x, y: x + y)', 'arguments': 2},
     {'color': None, 'text': "Subtract", 'command': '(lambda x, y: x - y)', 'arguments': 2},
     {'color': None, 'text': "Multiply", 'command': '(lambda x, y: x * y)', 'arguments': 2},
