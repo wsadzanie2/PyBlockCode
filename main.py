@@ -8,6 +8,7 @@ pygame.init()
 
 font = pygame.font.SysFont('Arial', 20)
 screen = pygame.display.set_mode((800, 600), RESIZABLE)
+pygame.display.set_caption('PyBlockCode')
 
 clock = pygame.time.Clock()
 running = True
@@ -308,6 +309,74 @@ blocks = []
 text_box = TextInput(font, pygame.Rect(0, 0, 800, 600))
 scroll = Scroll(5, 0, 5, 2000)
 
+class MenuBlockCreator:
+    def __init__(self, x=200, y=300):
+        self.x = x
+        self.y = y
+        self.rect = pygame.Rect(self.x, self.y, 250, 250)
+        self.text_win = TextInput(font, pygame.Rect(0, 0, 130, 30), background=(255, 0, 255))
+        self.text_win.text = "Block Name"
+        self.command_win = TextInput(font, pygame.Rect(0, 0, 130, 30), background=(255, 0, 255))
+        self.command_win.text = "Command"
+        self.args_win = TextInput(font, pygame.Rect(0, 0, 130, 30), background=(255, 0, 255))
+        self.args_win.text = "0"
+        self.button_rect = pygame.Rect(25, 25, 25, 25)
+        self.show_hide_rect = pygame.Rect(25, 25, 25, 25)
+        self.selected = None
+        self.visible = True
+    def update_values(self):
+        self.text_win.rect.midleft = self.rect.midleft
+        self.command_win.rect.midleft = self.rect.midleft
+        self.args_win.rect.midleft = self.rect.midleft
+        self.text_win.rect.x += 50
+        self.command_win.rect.x += 50
+        self.args_win.rect.x += 50
+        self.command_win.rect.y += 50
+        self.args_win.rect.y += 100
+        self.button_rect.midleft = self.rect.midleft
+        self.button_rect.left += 10
+        self.show_hide_rect.topleft = self.rect.topleft
+    def draw(self):
+        self.update_values()
+        if self.visible:
+            pygame.draw.rect(screen, (0, 0, 255), self.rect)
+            self.text_win.draw(screen)
+            self.command_win.draw(screen)
+            self.args_win.draw(screen)
+            pygame.draw.rect(screen, (0, 255, 0), self.button_rect)
+        pygame.draw.rect(screen, (255, 255, 0), self.show_hide_rect)
+    def spawn_block(self):
+        index = len(blocks)
+        BlockSpawner(x=20, y=(index * 60) + 20, color=None, text=self.text_win.text, command=self.command_win.text, arguments=int(self.args_win.text))
+        self.selected = None
+    def update(self, event):
+        self.update_values()
+        global selected
+        if event.type == MOUSEBUTTONDOWN:
+            if self.button_rect.collidepoint(pygame.mouse.get_pos()):
+                self.selected = self.button_rect
+            if self.show_hide_rect.collidepoint(pygame.mouse.get_pos()):
+                self.selected = self.show_hide_rect
+            if self.text_win.rect.collidepoint(pygame.mouse.get_pos()):
+                self.selected = self.text_win
+            if self.command_win.rect.collidepoint(pygame.mouse.get_pos()):
+                self.selected = self.command_win
+            if self.args_win.rect.collidepoint(pygame.mouse.get_pos()):
+                self.selected = self.args_win
+            if self.show_hide_rect.collidepoint(pygame.mouse.get_pos()):
+                self.selected = self.show_hide_rect
+        if self.selected == self.show_hide_rect:
+            self.visible = not self.visible
+            self.selected = None
+        if self.selected == self.text_win:
+            self.text_win.update(event)
+        if self.selected == self.command_win:
+            self.command_win.update(event)
+        if self.selected == self.args_win:
+            self.args_win.update(event)
+        if self.selected == self.button_rect:
+            self.spawn_block()
+
 class FileLoader:
     def __init__(self, x, y):
         self.x = x
@@ -322,6 +391,7 @@ class FileLoader:
         self.button_rect.left = self.rect.left + 10
         self.text_win.rect.center = self.rect.center
         self.text_win.rect.x = self.rect.x + 50
+
     def draw(self):
         self.update_values()
         pygame.draw.rect(screen, (0, 0, 255), self.rect)
@@ -344,6 +414,7 @@ class FileLoader:
             self.text_win.update(event)
 
 file_loader = FileLoader(300, 10)
+menu_block_creator = MenuBlockCreator(y=10)
 
 class CodeBlock:
     def __init__(self, x, y, width=150, height=50, color=None, text="Default Block", command='print', arguments=1, tabs_increase=0):
@@ -454,6 +525,7 @@ while running:
     screen.fill((107, 107, 18))
     pygame.draw.rect(screen, (100, 100, 80), pygame.Rect(0, 0, 200, 2000))
     for event in pygame.event.get():
+        menu_block_creator.update(event)
         file_loader.update(event)
         for block in blocks:
             block.update(event)
@@ -469,6 +541,7 @@ while running:
     for block in blocks:
         block.draw()
     scroll.draw()
+    menu_block_creator.draw()
     file_loader.draw()
     pygame.display.flip()
     clock.tick(60)

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Made the file name add into the run block by default.">
+    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Fixed a bug (when you scrolled on a block it duplicated, now you have to click on it!)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -156,7 +156,15 @@
       <option name="project" value="LOCAL" />
       <updated>1691434521851</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Fixed a bug (when you scrolled on a block it duplicated, now you have to click on it!)">
+      <option name="closed" value="true" />
+      <created>1691436925290</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1691436925290</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -175,6 +183,7 @@
     <MESSAGE value="Added loading files (with no variables loading yet)" />
     <MESSAGE value="Made a GUI for loading files!" />
     <MESSAGE value="Made the file name add into the run block by default." />
-    <option name="LAST_COMMIT_MESSAGE" value="Made the file name add into the run block by default." />
+    <MESSAGE value="Fixed a bug (when you scrolled on a block it duplicated, now you have to click on it!)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed a bug (when you scrolled on a block it duplicated, now you have to click on it!)" />
   </component>
 </project>
