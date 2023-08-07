@@ -119,7 +119,7 @@ class RunBlockSpawner:
         pygame.draw.rect(screen, (0, 255, 0), rect_border(self.button_rect, -2))
     def update(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN:
-            if self.rect.collidepoint(pygame.mouse.get_pos()):
+            if self.rect.collidepoint(pygame.mouse.get_pos()) and event.button == 1:
                 RunBlock(self.x, self.y, self.width, self.height, None).selected = True
                 selected = blocks[-1]
 
@@ -176,7 +176,7 @@ class BlockSpawner:
         screen.blit(self.text_surface, self.text_rect)
 
     def update(self, event):
-        if event.type == pygame.MOUSEBUTTONDOWN:
+        if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
             if self.rect.collidepoint(pygame.mouse.get_pos()):
                 CodeBlock(self.rect.x, self.rect.y, self.rect.width, self.rect.height, self.color, self.text, self.command, self.arguments, self.tab_increase)
 
