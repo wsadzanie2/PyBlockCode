@@ -32,6 +32,7 @@ def load_file(file):
         for line in f:
             loaded_file_list.append(line)
     previous_block = RunBlock(100, 100, 150, 50)
+    previous_block.text_input.text = file
     run_block = previous_block
     for idx, line in enumerate(loaded_file_list):
         for block in BLOCKS:

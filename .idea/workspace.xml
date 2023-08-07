@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Added loading files (with no variables loading yet)">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-    </list>
+    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Made a GUI for loading files!" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -140,7 +137,15 @@
       <option name="project" value="LOCAL" />
       <updated>1691424916372</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Made a GUI for loading files!">
+      <option name="closed" value="true" />
+      <created>1691433543938</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1691433543938</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -157,6 +162,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="This is my PyBlock project. It will allow childs to learn programming quicker!" />
     <MESSAGE value="Added loading files (with no variables loading yet)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added loading files (with no variables loading yet)" />
+    <MESSAGE value="Made a GUI for loading files!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made a GUI for loading files!" />
   </component>
 </project>
