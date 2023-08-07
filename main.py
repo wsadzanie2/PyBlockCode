@@ -13,6 +13,44 @@ clock = pygame.time.Clock()
 running = True
 selected = None
 tabs = 0
+loaded_file_list = []
+loaded_tabs = 0
+def count_spaces(string):
+    for i in range(len(string)):
+        if string[i] !=' ':
+            return i
+
+def load_file(file):
+    with open(file, 'r') as f:
+        for line in f:
+            loaded_file_list.append(line)
+    previous_block = RunBlock(100, 100, 150, 50)
+    run_block = previous_block
+    for idx, line in enumerate(loaded_file_list):
+        for block in BLOCKS:
+            if line.find(block['command']) != -1:
+                try:
+                    if block['command'] == '':
+                        if block['tab_increase'] == 0:
+                            continue
+                        if count_spaces(line) - count_spaces(loaded_file_list[idx+1]) != 4:
+                            continue
+                    current_block = CodeBlock(previous_block.x, previous_block.y + (idx * 50), color=block['color'], text=block['text'], command=block['command'], arguments=block['arguments'], tabs_increase=block['tab_increase'])
+                except Exception:
+                    if block['command'] == '':
+                        continue
+                    current_block = CodeBlock(previous_block.x, previous_block.y + (idx * 50), color=block['color'], text=block['text'], command=block['command'], arguments=block['arguments'])
+                current_block.parent = previous_block
+                previous_block.child = current_block
+                previous_block = current_block
+    run_block.move_childs(run_block.child)
+
+
+
+
+
+
+
 
 def load_blocks(blocks):
     for index, block in enumerate(blocks):
@@ -360,6 +398,11 @@ class CodeBlock:
 
 
 load_blocks(BLOCKS)
+
+a = input('Enter file name: ')
+if a is not '':
+    load_file(a)
+    print('File loaded')
 
 while running:
     screen.fill((107, 107, 18))
