@@ -15,6 +15,13 @@ selected = None
 tabs = 0
 loaded_file_list = []
 loaded_tabs = 0
+
+def get_arguments(command):
+    mystr = command[1:]
+    char1 = '('
+    char2 = ')'
+    return mystr[mystr.find(char1) + 1: mystr.find(char2)]
+
 def count_spaces(string):
     for i in range(len(string)):
         if string[i] !=' ':
@@ -40,6 +47,8 @@ def load_file(file):
                     if block['command'] == '':
                         continue
                     current_block = CodeBlock(previous_block.x, previous_block.y + (idx * 50), color=block['color'], text=block['text'], command=block['command'], arguments=block['arguments'])
+                if block['arguments'] > 0:
+                    current_block.text_input.text = get_arguments(loaded_file_list[idx])
                 current_block.parent = previous_block
                 previous_block.child = current_block
                 previous_block = current_block
@@ -298,6 +307,42 @@ blocks = []
 text_box = TextInput(font, pygame.Rect(0, 0, 800, 600))
 scroll = Scroll(5, 0, 5, 2000)
 
+class FileLoader:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+        self.rect = pygame.Rect(self.x, self.y, 150, 50)
+        self.text_win = TextInput(font, pygame.Rect(0, 0, 130, 30), background=(255, 0, 255))
+        self.text_win.text = "File Loader"
+        self.button_rect = pygame.Rect(25, 25, 25, 25)
+        self.selected = False
+    def update_values(self):
+        self.button_rect.center = self.rect.center
+        self.button_rect.left = self.rect.left + 10
+        self.text_win.rect.center = self.rect.center
+        self.text_win.rect.x = self.rect.x + 50
+    def draw(self):
+        self.update_values()
+        pygame.draw.rect(screen, (0, 0, 255), self.rect)
+        self.text_win.draw(screen)
+        pygame.draw.rect(screen, (0, 255, 0), self.button_rect)
+    def update(self, event):
+        global selected
+        if event.type == MOUSEBUTTONDOWN:
+            if self.rect.collidepoint(pygame.mouse.get_pos()):
+                self.selected = True
+                selected = self
+                if self.button_rect.collidepoint(pygame.mouse.get_pos()):
+                    try:
+                        load_file(self.text_win.text)
+                    except Exception as e:
+                        self.text_win.text = "Error: " + str(e)
+        if event.type == MOUSEBUTTONUP:
+            self.selected = False
+        if selected == self:
+            self.text_win.update(event)
+
+file_loader = FileLoader(300, 10)
 
 class CodeBlock:
     def __init__(self, x, y, width=150, height=50, color=None, text="Default Block", command='print', arguments=1, tabs_increase=0):
@@ -399,15 +444,16 @@ class CodeBlock:
 
 load_blocks(BLOCKS)
 
-a = input('Enter file name: ')
-if a is not '':
-    load_file(a)
-    print('File loaded')
+# a = input('Enter file name: ')
+# if a is not '':
+#     load_file(a)
+#     print('File loaded')
 
 while running:
     screen.fill((107, 107, 18))
     pygame.draw.rect(screen, (100, 100, 80), pygame.Rect(0, 0, 200, 2000))
     for event in pygame.event.get():
+        file_loader.update(event)
         for block in blocks:
             block.update(event)
         if event.type == QUIT:
@@ -422,5 +468,6 @@ while running:
     for block in blocks:
         block.draw()
     scroll.draw()
+    file_loader.draw()
     pygame.display.flip()
     clock.tick(60)
