@@ -12,10 +12,14 @@ screen = pygame.display.set_mode((800, 600), RESIZABLE)
 clock = pygame.time.Clock()
 running = True
 selected = None
+tabs = 0
 
 def load_blocks(blocks):
     for index, block in enumerate(blocks):
-        BlockSpawner(20, (index * 60) + 80, color=block['color'], text=block['text'], command=block['command'], arguments=block['arguments'])
+        try:
+            BlockSpawner(20, (index * 60) + 80, color=block['color'], text=block['text'], command=block['command'], arguments=block['arguments'], tab_increase=block['tab_increase'])
+        except Exception:
+            BlockSpawner(20, (index * 60) + 80, color=block['color'], text=block['text'], command=block['command'], arguments=block['arguments'])
     RunBlockSpawner(20, 20)
 
 
@@ -68,7 +72,8 @@ class RunBlockSpawner:
     def update(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN:
             if self.rect.collidepoint(pygame.mouse.get_pos()):
-                RunBlock(self.x, self.y, self.width, self.height, None)
+                RunBlock(self.x, self.y, self.width, self.height, None).selected = True
+                selected = blocks[-1]
 
 
 class Scroll:
@@ -89,8 +94,9 @@ class Scroll:
 
 
 class BlockSpawner:
-    def __init__(self, x, y, width=150, height=50, color=None, text="Default Block", command='print', arguments=1):
+    def __init__(self, x, y, width=150, height=50, color=None, text="Default Block", command='print', arguments=1, tab_increase=0):
         blocks.append(self)
+        self.tab_increase = tab_increase
         self.x = x
         self.y = y
         self.width = width
@@ -124,7 +130,7 @@ class BlockSpawner:
     def update(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN:
             if self.rect.collidepoint(pygame.mouse.get_pos()):
-                CodeBlock(self.rect.x, self.rect.y, self.rect.width, self.rect.height, self.color, self.text, self.command, self.arguments)
+                CodeBlock(self.rect.x, self.rect.y, self.rect.width, self.rect.height, self.color, self.text, self.command, self.arguments, self.tab_increase)
 
 
 class RunBlock:
@@ -132,7 +138,8 @@ class RunBlock:
         blocks.append(self)
         if color is None:
             color = random_color()
-        self.text_input = TextInput(font, pygame.Rect(x, y, width, height), color, text='default.py')
+        self.tabs_increase = 0
+        self.text_input = TextInput(font, pygame.Rect(x, y, width, height), color, text='')
         self.x = x
         self.y = y
         self.width = width
@@ -172,16 +179,20 @@ class RunBlock:
         return self.selected
 
     def compile(self):
+        global tabs
         current = self
         with open(self.text_input.text, 'w') as file:
             while current.child is not None:
                 if current.child.arguments > 0:
-                    file.write(current.child.command + '(' + current.child.text_input.text.strip(',') + ')')
+                    file.write('    '*tabs + current.child.command + '(' + current.child.text_input.text.strip(',') + ')')
+                    if current.child.tabs_increase > 0:
+                        file.write(':')
                     file.write('\n')
                 else:
-                    file.write(current.child.command)
+                    file.write('    '*tabs + current.child.command)
                     file.write('\n')
                 current = current.child
+                tabs += current.tabs_increase
 
     def update(self, event):
         global selected
@@ -251,7 +262,7 @@ scroll = Scroll(5, 0, 5, 2000)
 
 
 class CodeBlock:
-    def __init__(self, x, y, width=150, height=50, color=None, text="Default Block", command='print', arguments=1):
+    def __init__(self, x, y, width=150, height=50, color=None, text="Default Block", command='print', arguments=1, tabs_increase=0):
         if color is None:
             color = random_color()
         if arguments > 0:
@@ -259,6 +270,8 @@ class CodeBlock:
         else:
             self.text_input = None
         blocks.append(self)
+
+        self.tabs_increase = tabs_increase
         self.arguments = arguments
         self.x = x
         self.y = y
