@@ -413,7 +413,7 @@ class FileLoader:
         if selected == self:
             self.text_win.update(event)
 
-file_loader = FileLoader(300, 10)
+file_loader = FileLoader(290, 10)
 menu_block_creator = MenuBlockCreator(y=10)
 
 class CodeBlock:
@@ -542,6 +542,7 @@ while running:
         block.draw()
     scroll.draw()
     menu_block_creator.draw()
-    file_loader.draw()
+    if menu_block_creator.visible:
+        file_loader.draw()
     pygame.display.flip()
     clock.tick(60)

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Fixed a bug (when you scrolled on a block it duplicated, now you have to click on it!)">
+    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Added a way to add custom blocks">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -164,7 +164,15 @@
       <option name="project" value="LOCAL" />
       <updated>1691436925290</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Added a way to add custom blocks">
+      <option name="closed" value="true" />
+      <created>1691443681501</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1691443681501</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -184,6 +192,7 @@
     <MESSAGE value="Made a GUI for loading files!" />
     <MESSAGE value="Made the file name add into the run block by default." />
     <MESSAGE value="Fixed a bug (when you scrolled on a block it duplicated, now you have to click on it!)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed a bug (when you scrolled on a block it duplicated, now you have to click on it!)" />
+    <MESSAGE value="Added a way to add custom blocks" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a way to add custom blocks" />
   </component>
 </project>
