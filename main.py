@@ -32,7 +32,7 @@ def load_file(file):
     with open(file, 'r') as f:
         for line in f:
             loaded_file_list.append(line)
-    previous_block = RunBlock(100, 100, 150, 50)
+    previous_block = RunBlock(300, 300, 150, 50)
     previous_block.text_input.text = file
     run_block = previous_block
     for idx, line in enumerate(loaded_file_list):
@@ -309,6 +309,8 @@ blocks = []
 text_box = TextInput(font, pygame.Rect(0, 0, 800, 600))
 scroll = Scroll(5, 0, 5, 2000)
 
+
+
 class MenuBlockCreator:
     def __init__(self, x=210, y=300):
         self.x = x
@@ -354,7 +356,7 @@ class MenuBlockCreator:
     def update(self, event):
         self.update_values()
         global selected
-        if event.type == MOUSEBUTTONDOWN:
+        if event.type == MOUSEBUTTONDOWN and event.button == 1:
             if self.button_rect.collidepoint(pygame.mouse.get_pos()):
                 self.selected = self.button_rect
             if self.show_hide_rect.collidepoint(pygame.mouse.get_pos()):
