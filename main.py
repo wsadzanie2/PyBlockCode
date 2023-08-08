@@ -294,7 +294,7 @@ class TextInput:
         self.text_surface = self.font.render(self.text, True, (0, 0, 0))
         self.text_rect = self.text_surface.get_rect()
         self.text_rect.midleft = self.rect.midleft
-        self.rect.width = self.text_rect.width + 5
+        self.rect.width = self.text_rect.width + 10
 
     def draw(self, surface):
         self.update_values()
@@ -310,7 +310,7 @@ text_box = TextInput(font, pygame.Rect(0, 0, 800, 600))
 scroll = Scroll(5, 0, 5, 2000)
 
 class MenuBlockCreator:
-    def __init__(self, x=200, y=300):
+    def __init__(self, x=210, y=300):
         self.x = x
         self.y = y
         self.rect = pygame.Rect(self.x, self.y, 250, 250)
@@ -320,8 +320,8 @@ class MenuBlockCreator:
         self.command_win.text = "Command"
         self.args_win = TextInput(font, pygame.Rect(0, 0, 130, 30), background=(255, 0, 255))
         self.args_win.text = "0"
-        self.button_rect = pygame.Rect(25, 25, 25, 25)
-        self.show_hide_rect = pygame.Rect(25, 25, 25, 25)
+        self.button_rect = pygame.Rect(25, 25, 30, 30)
+        self.show_hide_rect = pygame.Rect(25, 25, 30, 30)
         self.selected = None
         self.visible = True
     def update_values(self):
@@ -343,8 +343,10 @@ class MenuBlockCreator:
             self.text_win.draw(screen)
             self.command_win.draw(screen)
             self.args_win.draw(screen)
-            pygame.draw.rect(screen, (0, 255, 0), self.button_rect)
-        pygame.draw.rect(screen, (255, 255, 0), self.show_hide_rect)
+            pygame.draw.rect(screen, (0, 0, 0), self.button_rect)
+            pygame.draw.rect(screen, (0, 255, 0), rect_border(self.button_rect, -3))
+        pygame.draw.rect(screen, (0, 0, 0), self.show_hide_rect)
+        pygame.draw.rect(screen, (255, 255, 0), rect_border(self.show_hide_rect, -3))
     def spawn_block(self):
         index = len(blocks)
         BlockSpawner(x=20, y=(index * 60) + 20, color=None, text=self.text_win.text, command=self.command_win.text, arguments=int(self.args_win.text))
@@ -396,6 +398,7 @@ class FileLoader:
         self.update_values()
         pygame.draw.rect(screen, (0, 0, 255), self.rect)
         self.text_win.draw(screen)
+        pygame.draw.rect(screen, (0, 0, 0), self.button_rect)
         pygame.draw.rect(screen, (0, 255, 0), self.button_rect)
     def update(self, event):
         global selected
