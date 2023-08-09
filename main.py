@@ -330,7 +330,7 @@ class MenuBlockCreator:
         self.import_win = TextInput(font, pygame.Rect(0, 0, 130, 30), background=(255, 0, 255), text='Add New Blocks here!')
         self.import_rect = pygame.Rect(25, 25, 30, 30)
         self.selected = None
-        self.visible = True
+        self.visible = False
     def update_values(self):
         self.text_win.rect.midleft = self.rect.midleft
         self.command_win.rect.midleft = self.rect.midleft
@@ -434,7 +434,7 @@ class FileLoader:
         pygame.draw.rect(screen, (0, 0, 255), self.rect)
         self.text_win.draw(screen)
         pygame.draw.rect(screen, (0, 0, 0), self.button_rect)
-        pygame.draw.rect(screen, (0, 255, 0), self.button_rect)
+        pygame.draw.rect(screen, (0, 255, 0), rect_border(self.button_rect, -3))
     def update(self, event):
         global selected
         if event.type == MOUSEBUTTONDOWN and event.button == 1:
