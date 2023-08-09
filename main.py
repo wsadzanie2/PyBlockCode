@@ -578,6 +578,13 @@ while running:
                 if selected is not None:
                     if selected in blocks:
                         blocks.remove(selected)
+            elif event.key == K_k:
+                current = selected
+                blocks.remove(current)
+                while current.child:
+                    current = current.child
+                    blocks.remove(current)
+
 
         scroll.update(event)
     for block in blocks:
