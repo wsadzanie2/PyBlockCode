@@ -1,5 +1,6 @@
 BLOCKS = [
     {'color': None, 'text': "For", 'command': 'for i in range', 'arguments': 1, 'tab_increase': 1},
+    {'color': None, 'text': "Else", 'command': 'else:', 'arguments': 0, 'tab_increase': 1},
     {'color': None, 'text': "While", 'command': 'while ', 'arguments': 1, 'tab_increase': 1},
     {'color': None, 'text': "End", 'command': '', 'arguments': 0, 'tab_increase': -1},
     {'color': None, 'text': "exec", 'command': 'exec', 'arguments': 1},

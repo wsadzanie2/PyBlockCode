@@ -1,6 +1,9 @@
 import pygame
 import random
-from Blocks import BLOCKS
+try:
+    from Blocks import BLOCKS
+except Exception:
+    BLOCKS = []
 from pygame.locals import *
 
 pygame.init()
@@ -324,6 +327,8 @@ class MenuBlockCreator:
         self.args_win.text = "0"
         self.button_rect = pygame.Rect(25, 25, 30, 30)
         self.show_hide_rect = pygame.Rect(25, 25, 30, 30)
+        self.import_win = TextInput(font, pygame.Rect(0, 0, 130, 30), background=(255, 0, 255), text='Add New Blocks here!')
+        self.import_rect = pygame.Rect(25, 25, 30, 30)
         self.selected = None
         self.visible = True
     def update_values(self):
@@ -338,6 +343,12 @@ class MenuBlockCreator:
         self.button_rect.midleft = self.rect.midleft
         self.button_rect.left += 10
         self.show_hide_rect.topleft = self.rect.topleft
+        self.import_win.rect.midleft = self.rect.midleft
+        self.import_win.rect.x += 50
+        self.import_win.rect.y -= 50
+        self.import_rect.midleft = self.rect.midleft
+        self.import_rect.y -= 50
+        self.import_rect.x += 10
     def draw(self):
         self.update_values()
         if self.visible:
@@ -345,14 +356,22 @@ class MenuBlockCreator:
             self.text_win.draw(screen)
             self.command_win.draw(screen)
             self.args_win.draw(screen)
+            self.import_win.draw(screen)
             pygame.draw.rect(screen, (0, 0, 0), self.button_rect)
             pygame.draw.rect(screen, (0, 255, 0), rect_border(self.button_rect, -3))
+            pygame.draw.rect(screen, (0, 0, 0), self.import_rect)
+            pygame.draw.rect(screen, (0, 255, 0), rect_border(self.import_rect, -3))
         pygame.draw.rect(screen, (0, 0, 0), self.show_hide_rect)
         pygame.draw.rect(screen, (255, 255, 0), rect_border(self.show_hide_rect, -3))
     def spawn_block(self):
         index = len(blocks)
         BlockSpawner(x=20, y=(index * 60) + 20, color=None, text=self.text_win.text, command=self.command_win.text, arguments=int(self.args_win.text))
         self.selected = None
+    def load_import_block(self):
+        import_blocks = __import__(self.import_win.text)
+        for block in import_blocks.BLOCKS:
+            BlockSpawner(x=20, y=(len(blocks) * 60) + 20, color=None, text=block['text'], command=block['command'], arguments=block['arguments'])
+        # self.import_win.text
     def update(self, event):
         self.update_values()
         global selected
@@ -369,6 +388,10 @@ class MenuBlockCreator:
                 self.selected = self.args_win
             if self.show_hide_rect.collidepoint(pygame.mouse.get_pos()):
                 self.selected = self.show_hide_rect
+            if self.import_rect.collidepoint(pygame.mouse.get_pos()):
+                self.selected = self.import_rect
+            if self.import_win.rect.collidepoint(pygame.mouse.get_pos()):
+                self.selected = self.import_win
         if self.selected == self.show_hide_rect:
             self.visible = not self.visible
             self.selected = None
@@ -380,6 +403,16 @@ class MenuBlockCreator:
             self.args_win.update(event)
         if self.selected == self.button_rect:
             self.spawn_block()
+        if self.selected == self.import_rect:
+            try:
+                self.load_import_block()
+            except Exception as e:
+                self.import_win.text = str(e)
+                if len(self.import_win.text) > 60:
+                    self.import_win.text = self.import_win.text[:60] + '...'
+            self.selected = None
+        if self.selected == self.import_win:
+            self.import_win.update(event)
 
 class FileLoader:
     def __init__(self, x, y):
@@ -413,6 +446,8 @@ class FileLoader:
                         load_file(self.text_win.text)
                     except Exception as e:
                         self.text_win.text = "Error: " + str(e)
+                        if len(self.text_win.text) > 60:
+                            self.text_win.text = self.text_win.text[:60] + '...'
         if event.type == MOUSEBUTTONUP:
             self.selected = False
         if selected == self:
