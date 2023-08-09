@@ -437,7 +437,7 @@ class FileLoader:
         pygame.draw.rect(screen, (0, 255, 0), self.button_rect)
     def update(self, event):
         global selected
-        if event.type == MOUSEBUTTONDOWN:
+        if event.type == MOUSEBUTTONDOWN and event.button == 1:
             if self.rect.collidepoint(pygame.mouse.get_pos()):
                 self.selected = True
                 selected = self
