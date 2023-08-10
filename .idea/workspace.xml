@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Made the run block autoselect whem you spawn it">
+    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="You can now type even if you didn't click on a text box">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -61,19 +61,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/pawel/PycharmProjects/PyBlock&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/pawel/PycharmProjects/PyBlock",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;ChangesTree.GroupingKeys&quot;: [
-      &quot;directory&quot;
+  "keyToStringList": {
+    "ChangesTree.GroupingKeys": [
+      "directory"
     ]
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -243,7 +243,15 @@
       <option name="project" value="LOCAL" />
       <updated>1691685626217</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="You can now type even if you didn't click on a text box">
+      <option name="closed" value="true" />
+      <created>1691687463267</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1691687463267</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -273,6 +281,7 @@
     <MESSAGE value="Changed the default visibility of the menu to False" />
     <MESSAGE value="Fixed some bugs. Loading 1 file multiple times no longer destroys the file" />
     <MESSAGE value="Made the run block autoselect whem you spawn it" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made the run block autoselect whem you spawn it" />
+    <MESSAGE value="You can now type even if you didn't click on a text box" />
+    <option name="LAST_COMMIT_MESSAGE" value="You can now type even if you didn't click on a text box" />
   </component>
 </project>

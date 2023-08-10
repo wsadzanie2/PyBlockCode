@@ -303,8 +303,8 @@ class TextInput:
         self.text_rect = self.text_surface.get_rect()
         self.text_rect.midleft = self.rect.midleft
         self.rect.width = self.text_rect.width
-        if len(self.text) <= 1:
-            self.rect.width += 10
+        if self.rect.width <= 10:
+            self.rect.width = 10
 
     def draw(self, surface):
         self.update_values()
