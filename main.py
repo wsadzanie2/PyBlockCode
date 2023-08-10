@@ -578,7 +578,7 @@ while running:
                 if selected is not None:
                     if selected in blocks:
                         blocks.remove(selected)
-            elif event.key == K_k:
+            elif event.key == K_F1:
                 if selected is not None:
                     current = selected
                     selected = None
