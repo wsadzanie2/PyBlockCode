@@ -32,6 +32,7 @@ def count_spaces(string):
             return i
 
 def load_file(file):
+    loaded_file_list = []
     with open(file, 'r') as f:
         for line in f:
             loaded_file_list.append(line)
