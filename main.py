@@ -279,7 +279,7 @@ class RunBlock:
 class TextInput:
     def __init__(self, font, rect, background=(0, 0, 0), text=''):
         self.background = background
-        self.selected = False
+        self.selected = True
         self.text = text
         self.font = font
         self.rect = rect
@@ -402,24 +402,25 @@ class MenuBlockCreator:
         if self.selected == self.show_hide_rect:
             self.visible = not self.visible
             self.selected = None
-        if self.selected == self.text_win:
-            self.text_win.update(event)
-        if self.selected == self.command_win:
-            self.command_win.update(event)
-        if self.selected == self.args_win:
-            self.args_win.update(event)
-        if self.selected == self.button_rect:
-            self.spawn_block()
-        if self.selected == self.import_rect:
-            try:
-                self.load_import_block()
-            except Exception as e:
-                self.import_win.text = str(e)
-                if len(self.import_win.text) > 60:
-                    self.import_win.text = self.import_win.text[:60] + '...'
-            self.selected = None
-        if self.selected == self.import_win:
-            self.import_win.update(event)
+        if selected is None:
+            if self.selected == self.text_win:
+                self.text_win.update(event)
+            if self.selected == self.command_win:
+                self.command_win.update(event)
+            if self.selected == self.args_win:
+                self.args_win.update(event)
+            if self.selected == self.button_rect:
+                self.spawn_block()
+            if self.selected == self.import_rect:
+                try:
+                    self.load_import_block()
+                except Exception as e:
+                    self.import_win.text = str(e)
+                    if len(self.import_win.text) > 60:
+                        self.import_win.text = self.import_win.text[:60] + '...'
+                self.selected = None
+            if self.selected == self.import_win:
+                self.import_win.update(event)
 
 class FileLoader:
     def __init__(self, x, y):
@@ -455,6 +456,8 @@ class FileLoader:
                         self.text_win.text = "Error: " + str(e)
                         if len(self.text_win.text) > 60:
                             self.text_win.text = self.text_win.text[:60] + '...'
+            elif selected == self:
+                selected = None
         if event.type == MOUSEBUTTONUP:
             self.selected = False
         if selected == self:
@@ -531,6 +534,8 @@ class CodeBlock:
             if self.rect.collidepoint(pygame.mouse.get_pos()):
                 self.dragging = True
                 selected = self
+            elif selected == self:
+                selected = None
         elif event.type == MOUSEBUTTONUP:
             self.dragging = False
         if self.dragging:
@@ -544,10 +549,12 @@ class CodeBlock:
         if child.child is not None:
             child.move_childs(child.child)
     def update(self, event):
+        global selected
         if selected == self and self.text_input is not None:
             self.text_input.update(event)
         self.drag(event)
     def if_parent_selected(self):
+        global selected
         if selected == self:
             return True
         if self.parent is not None:
@@ -591,8 +598,6 @@ while running:
                     while current.child:
                         current = current.child
                         blocks.remove(current)
-
-
         scroll.update(event)
     for block in blocks:
         block.draw()
