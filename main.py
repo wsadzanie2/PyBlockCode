@@ -123,6 +123,7 @@ class RunBlockSpawner:
         pygame.draw.rect(screen, (0, 0, 0), self.button_rect)
         pygame.draw.rect(screen, (0, 255, 0), rect_border(self.button_rect, -2))
     def update(self, event):
+        global selected
         if event.type == pygame.MOUSEBUTTONDOWN:
             if self.rect.collidepoint(pygame.mouse.get_pos()) and event.button == 1:
                 RunBlock(self.x, self.y, self.width, self.height, None).selected = True
