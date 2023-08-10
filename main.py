@@ -579,11 +579,13 @@ while running:
                     if selected in blocks:
                         blocks.remove(selected)
             elif event.key == K_k:
-                current = selected
-                blocks.remove(current)
-                while current.child:
-                    current = current.child
+                if selected is not None:
+                    current = selected
+                    selected = None
                     blocks.remove(current)
+                    while current.child:
+                        current = current.child
+                        blocks.remove(current)
 
 
         scroll.update(event)
