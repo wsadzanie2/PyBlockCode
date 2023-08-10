@@ -263,6 +263,8 @@ class RunBlock:
             if self.rect.collidepoint(pygame.mouse.get_pos()):
                 self.selected = True
                 selected = self
+            elif selected == self:
+                selected = None
         if event.type == MOUSEBUTTONUP:
             self.selected = False
         if self.selected:
