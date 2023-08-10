@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Changed the default visibility of the menu to False">
+    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Changed the K key to F1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blocks.py" beforeDir="false" afterPath="$PROJECT_DIR$/Blocks.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -229,7 +228,15 @@
       <option name="project" value="LOCAL" />
       <updated>1691607639220</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Changed the K key to F1">
+      <option name="closed" value="true" />
+      <created>1691679860811</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1691679860812</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -257,6 +264,7 @@
     <MESSAGE value="Made it possible to &quot;import&quot; new blocks from files and added a max limit of 60 for errors displayed" />
     <MESSAGE value="Fixed the FileLoader button. It no longer reacts to the scroll wheel" />
     <MESSAGE value="Changed the default visibility of the menu to False" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed the default visibility of the menu to False" />
+    <MESSAGE value="Changed the K key to F1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed the K key to F1" />
   </component>
 </project>

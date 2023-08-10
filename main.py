@@ -215,7 +215,10 @@ class RunBlock:
     def is_parent(self, _):
         return self.selected
     def draw(self):
+        global selected
         self.update_values()
+        if selected == self:
+            pygame.draw.rect(screen, (0, 0, 0), rect_border(self.rect, 2))
         pygame.draw.rect(screen, self.color, self.rect)
         pygame.draw.rect(screen, (0, 0, 0), self.button_rect)
         pygame.draw.rect(screen, (0, 255, 0), rect_border(self.button_rect, -2))
