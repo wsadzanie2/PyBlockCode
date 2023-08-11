@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="">
+    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Added specific colors to each block">
+      <change afterPath="$PROJECT_DIR$/pygame-blocks.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blocks.py" beforeDir="false" afterPath="$PROJECT_DIR$/Blocks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -291,7 +292,15 @@
       <option name="project" value="LOCAL" />
       <updated>1691697348847</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Added specific colors to each block">
+      <option name="closed" value="true" />
+      <created>1691793803578</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1691793803578</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -324,6 +333,7 @@
     <MESSAGE value="You can now type even if you didn't click on a text box" />
     <MESSAGE value="Made the Text Boxes a bit better" />
     <MESSAGE value="Fixed something" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed something" />
+    <MESSAGE value="Added specific colors to each block" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added specific colors to each block" />
   </component>
 </project>

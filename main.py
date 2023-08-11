@@ -17,6 +17,7 @@ clock = pygame.time.Clock()
 running = True
 selected = None
 tabs = 0
+imported_modules = []
 loaded_file_list = []
 loaded_tabs = 0
 
@@ -377,9 +378,12 @@ class MenuBlockCreator:
         BlockSpawner(x=20, y=(index * 60) + 20, color=None, text=self.text_win.text, command=self.command_win.text, arguments=int(self.args_win.text))
         self.selected = None
     def load_import_block(self):
+        if self.import_win.text in imported_modules:
+            raise Exception("Block already imported")
         import_blocks = __import__(self.import_win.text)
         for block in import_blocks.BLOCKS:
-            BlockSpawner(x=20, y=(len(blocks) * 60) + 20, color=None, text=block['text'], command=block['command'], arguments=block['arguments'])
+            BlockSpawner(x=20, y=(len(blocks) * 60) + 20, color=block['color'], text=block['text'], command=block['command'], arguments=block['arguments'])
+        imported_modules.append(self.import_win.text)
         # self.import_win.text
     def update(self, event):
         self.update_values()
