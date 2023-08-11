@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Added specific colors to each block">
-      <change afterPath="$PROJECT_DIR$/pygame-blocks.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Added basic support for pygame with pygame-blocks.py and made it easier to load other blocks">
+      <change beforePath="$PROJECT_DIR$/pygame-blocks.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygame-blocks.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -300,7 +298,15 @@
       <option name="project" value="LOCAL" />
       <updated>1691793803578</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Added basic support for pygame with pygame-blocks.py and made it easier to load other blocks">
+      <option name="closed" value="true" />
+      <created>1691794943157</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1691794943157</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -334,6 +340,7 @@
     <MESSAGE value="Made the Text Boxes a bit better" />
     <MESSAGE value="Fixed something" />
     <MESSAGE value="Added specific colors to each block" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added specific colors to each block" />
+    <MESSAGE value="Added basic support for pygame with pygame-blocks.py and made it easier to load other blocks" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added basic support for pygame with pygame-blocks.py and made it easier to load other blocks" />
   </component>
 </project>
