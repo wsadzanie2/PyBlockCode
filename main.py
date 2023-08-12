@@ -50,7 +50,6 @@ def load_file(file):
     previous_block = RunBlock(300, 300, 150, 50)
     previous_block.text_input.text = file
     run_block = previous_block
-    print(BLOCKS)
     for idx, line in enumerate(loaded_file_list):
         for block in BLOCKS:
             if line.find(block['command']) != -1:
