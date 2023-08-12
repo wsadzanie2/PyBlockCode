@@ -21,15 +21,20 @@ imported_modules = []
 loaded_file_list = []
 loaded_tabs = 0
 
+def get_last_char(str, char):
+    for idx, chars in enumerate(reversed(str)):
+        if chars == char:
+            return len(str) - idx - 1
+
+
+
+
 def get_arguments(command):
     mystr = command[1:]
     char1 = '('
     char2 = ')'
     first_char_idx = mystr.find(char1)
-    second_char_idx = mystr.find(char2)
-    if len(mystr) > second_char_idx:
-        if mystr[second_char_idx + 1] == char2:
-            return mystr[first_char_idx + 1: second_char_idx + 1]
+    second_char_idx = get_last_char(mystr, char2)
     return mystr[first_char_idx + 1: second_char_idx]
 
 def count_spaces(string):
@@ -610,7 +615,7 @@ while running:
                     if selected in blocks:
                         blocks.remove(selected)
             elif event.key == K_F1:
-                if selected is not None:
+                if selected is not None and selected in blocks:
                     current = selected
                     selected = None
                     blocks.remove(current)
