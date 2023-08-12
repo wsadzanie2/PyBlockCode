@@ -40,6 +40,7 @@ def load_file(file):
     previous_block = RunBlock(300, 300, 150, 50)
     previous_block.text_input.text = file
     run_block = previous_block
+    print(BLOCKS)
     for idx, line in enumerate(loaded_file_list):
         for block in BLOCKS:
             if line.find(block['command']) != -1:
@@ -238,6 +239,7 @@ class RunBlock:
 
     def compile(self):
         global tabs
+        tabs = 0
         current = self
         with open(self.text_input.text, 'w') as file:
             while current.child is not None:
@@ -378,9 +380,12 @@ class MenuBlockCreator:
         BlockSpawner(x=20, y=(index * 60) + 20, color=None, text=self.text_win.text, command=self.command_win.text, arguments=int(self.args_win.text))
         self.selected = None
     def load_import_block(self):
+        global BLOCKS
         if self.import_win.text in imported_modules:
             raise Exception("Block already imported")
         import_blocks = __import__(self.import_win.text)
+        BLOCKS += import_blocks.BLOCKS
+        print(BLOCKS)
         for block in import_blocks.BLOCKS:
             BlockSpawner(x=20, y=(len(blocks) * 60) + 20, color=block['color'], text=block['text'], command=block['command'], arguments=block['arguments'])
         imported_modules.append(self.import_win.text)

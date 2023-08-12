@@ -1,6 +1,6 @@
 BLOCKS = [
     {'color': (255, 255, 0), 'text': "PYGAME", 'command': 'import pygame', 'arguments': 0, 'tab_increase': 0},
-    {'color': (255, 255, 0), 'text': "screen", 'command': 'pygame.display.set_mode', 'arguments': 2, 'tab_increase':0},
+    {'color': (255, 255, 0), 'text': "screen", 'command': 'screen = pygame.display.set_mode', 'arguments': 2, 'tab_increase':0},
     {'color': (255, 255, 0), 'text': "set_caption", 'command': 'pygame.display.set_caption', 'arguments': 1, 'tab_increase':0},
     {'color': (255, 255, 0), 'text': "quit", 'command': 'pygame.quit', 'arguments': 1, 'tab_increase':0},
     {'color': (255, 255, 0), 'text': "clock", 'command': 'pygame.time.Clock', 'arguments': 1, 'tab_increase':0},
@@ -10,4 +10,10 @@ BLOCKS = [
     {'color': (255, 255, 0), 'text': "quit", 'command': 'pygame.quit', 'arguments': 1, 'tab_increase':0},
     {'color': (255, 255, 0), 'text': "clock", 'command': 'pygame.time.Clock', 'arguments': 1, 'tab_increase':0},
     {'color': (255, 255, 0), 'text': "delay", 'command': 'pygame.time.delay', 'arguments': 1, 'tab_increase':0},
+    {'color': (255, 255, 0), 'text': "Draw Rectangle", 'command': 'pygame.draw.rect', 'arguments': 4},
+    {'color': (255, 255, 0), 'text': "Draw Circle", 'command': 'pygame.draw.circle', 'arguments': 4},
+    {'color': (255, 255, 0), 'text': "Draw Ellipse", 'command': 'pygame.draw.ellipse', 'arguments': 4},
+    {'color': (255, 255, 0), 'text': "Draw Line", 'command': 'pygame.draw.line', 'arguments': 4},
+    {'color': (255, 255, 0), 'text': "Refresh Screen", 'command': 'pygame.display.flip', 'arguments': 1},
+    {'color': (255, 255, 0), 'text': "Fill Screen", 'command': 'screen.fill', 'arguments': 1},
     ]
