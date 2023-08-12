@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Expanded the pygame-blocks &quot;plugin&quot;">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Fixed some errors!">
       <change beforePath="$PROJECT_DIR$/pygame-blocks.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygame-blocks.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -332,7 +330,15 @@
       <option name="project" value="LOCAL" />
       <updated>1691851910758</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Fixed some errors!">
+      <option name="closed" value="true" />
+      <created>1691853175629</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1691853175629</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -356,7 +362,6 @@
     <MESSAGE value="Made FileLoader hide with the yellow button menu ;)" />
     <MESSAGE value="sending the newest version" />
     <MESSAGE value="Made some small changes to make PyBlockCode look better, and made it easier to use" />
-    <MESSAGE value="Fixed some errors!" />
     <MESSAGE value="Made it possible to &quot;import&quot; new blocks from files and added a max limit of 60 for errors displayed" />
     <MESSAGE value="Fixed the FileLoader button. It no longer reacts to the scroll wheel" />
     <MESSAGE value="Changed the default visibility of the menu to False" />
@@ -368,6 +373,7 @@
     <MESSAGE value="Added specific colors to each block" />
     <MESSAGE value="Added basic support for pygame with pygame-blocks.py and made it easier to load other blocks" />
     <MESSAGE value="Expanded the pygame-blocks &quot;plugin&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Expanded the pygame-blocks &quot;plugin&quot;" />
+    <MESSAGE value="Fixed some errors!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed some errors!" />
   </component>
 </project>
