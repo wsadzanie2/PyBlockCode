@@ -4,6 +4,7 @@ BLOCKS = [
     {'color': (100, 200, 0), 'text': "While", 'command': 'while ', 'arguments': 1, 'tab_increase': 1},
     {'color': (100, 200, 0), 'text': "End", 'command': '', 'arguments': 0, 'tab_increase': -1},
     {'color': (255, 70, 70), 'text': "exec", 'command': 'exec', 'arguments': 1},
+    {'color': (255, 70, 70), 'text': "quit", 'command': 'quit', 'arguments': 1},
     {'color': (0, 191, 255), 'text': "Print", 'command': 'print', 'arguments': 1},
     {'color': (119, 118, 123), 'text': "Comment", 'command': '# ', 'arguments': 1},
     {'color': (119, 118, 123), 'text': "Spacer", 'command': '', 'arguments': 0},

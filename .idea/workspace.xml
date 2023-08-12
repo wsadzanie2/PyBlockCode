@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Fixed some errors!">
+    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Fixed some errors, expanded the pygame-blocks &quot;plugin&quot;">
+      <change beforePath="$PROJECT_DIR$/Blocks.py" beforeDir="false" afterPath="$PROJECT_DIR$/Blocks.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pygame-blocks.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygame-blocks.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -338,7 +339,15 @@
       <option name="project" value="LOCAL" />
       <updated>1691853175629</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Fixed some errors, expanded the pygame-blocks &quot;plugin&quot;">
+      <option name="closed" value="true" />
+      <created>1691853489422</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1691853489422</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -374,6 +383,7 @@
     <MESSAGE value="Added basic support for pygame with pygame-blocks.py and made it easier to load other blocks" />
     <MESSAGE value="Expanded the pygame-blocks &quot;plugin&quot;" />
     <MESSAGE value="Fixed some errors!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed some errors!" />
+    <MESSAGE value="Fixed some errors, expanded the pygame-blocks &quot;plugin&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed some errors, expanded the pygame-blocks &quot;plugin&quot;" />
   </component>
 </project>
