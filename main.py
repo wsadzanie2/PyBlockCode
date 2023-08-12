@@ -25,7 +25,12 @@ def get_arguments(command):
     mystr = command[1:]
     char1 = '('
     char2 = ')'
-    return mystr[mystr.find(char1) + 1: mystr.find(char2)]
+    first_char_idx = mystr.find(char1)
+    second_char_idx = mystr.find(char2)
+    if len(mystr) > second_char_idx:
+        if mystr[second_char_idx + 1] == char2:
+            return mystr[first_char_idx + 1: second_char_idx + 1]
+    return mystr[first_char_idx + 1: second_char_idx]
 
 def count_spaces(string):
     for i in range(len(string)):
@@ -387,7 +392,10 @@ class MenuBlockCreator:
         BLOCKS += import_blocks.BLOCKS
         print(BLOCKS)
         for block in import_blocks.BLOCKS:
-            BlockSpawner(x=20, y=(len(blocks) * 60) + 20, color=block['color'], text=block['text'], command=block['command'], arguments=block['arguments'])
+            try:
+                BlockSpawner(x=20, y=(len(blocks) * 60) + 20, color=block['color'], text=block['text'], command=block['command'], arguments=block['arguments'], tab_increase=block['tab_increase'])
+            except Exception:
+                BlockSpawner(x=20, y=(len(blocks) * 60) + 20, color=block['color'], text=block['text'], command=block['command'], arguments=block['arguments'])
         imported_modules.append(self.import_win.text)
         # self.import_win.text
     def update(self, event):
