@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Added basic support for pygame with pygame-blocks.py and made it easier to load other blocks">
+    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Expanded the pygame-blocks &quot;plugin&quot;">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pygame-blocks.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygame-blocks.py" afterDir="false" />
     </list>
@@ -61,19 +61,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/pawel/PycharmProjects/PyBlock/main.py",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/pawel/PycharmProjects/PyBlock/main.py&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   },
-  "keyToStringList": {
-    "ChangesTree.GroupingKeys": [
-      "directory"
+  &quot;keyToStringList&quot;: {
+    &quot;ChangesTree.GroupingKeys&quot;: [
+      &quot;directory&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="PyBlock" />
@@ -315,7 +315,15 @@
       <option name="project" value="LOCAL" />
       <updated>1691795017731</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Expanded the pygame-blocks &quot;plugin&quot;">
+      <option name="closed" value="true" />
+      <created>1691795766787</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1691795766787</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -350,6 +358,7 @@
     <MESSAGE value="Fixed something" />
     <MESSAGE value="Added specific colors to each block" />
     <MESSAGE value="Added basic support for pygame with pygame-blocks.py and made it easier to load other blocks" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added basic support for pygame with pygame-blocks.py and made it easier to load other blocks" />
+    <MESSAGE value="Expanded the pygame-blocks &quot;plugin&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Expanded the pygame-blocks &quot;plugin&quot;" />
   </component>
 </project>
