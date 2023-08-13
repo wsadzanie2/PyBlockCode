@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Fixed the duplicate command in pygame-blocks.py. It seems to work now!">
+    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Removed prints!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +52,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -406,7 +407,15 @@
       <option name="project" value="LOCAL" />
       <updated>1691939902157</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Removed prints!">
+      <option name="closed" value="true" />
+      <created>1691946908850</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1691946908850</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -421,7 +430,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added loading files (with no variables loading yet)" />
     <MESSAGE value="Made a GUI for loading files!" />
     <MESSAGE value="Made the file name add into the run block by default." />
     <MESSAGE value="Fixed a bug (when you scrolled on a block it duplicated, now you have to click on it!)" />
@@ -446,6 +454,7 @@
     <MESSAGE value="Fixed the &quot;)&quot; at the end of an input bug ;)" />
     <MESSAGE value="Tried and failed to fix some errors" />
     <MESSAGE value="Fixed the duplicate command in pygame-blocks.py. It seems to work now!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed the duplicate command in pygame-blocks.py. It seems to work now!" />
+    <MESSAGE value="Removed prints!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed prints!" />
   </component>
 </project>

@@ -21,10 +21,11 @@ imported_modules = []
 loaded_file_list = []
 loaded_tabs = 0
 
-def get_last_char(str, char):
-    for idx, chars in enumerate(reversed(str)):
+
+def get_last_char(string, char):
+    for idx, chars in enumerate(reversed(string)):
         if chars == char:
-            return len(str) - idx - 1
+            return len(string) - idx - 1
 
 
 
@@ -270,7 +271,7 @@ class RunBlock:
         if event.type == MOUSEBUTTONDOWN:
             if self.text_input.rect.collidepoint(pygame.mouse.get_pos()):
                 return
-            if self.button_rect.collidepoint(pygame.mouse.get_pos()):
+            if self.button_rect.collidepoint(pygame.mouse.get_pos()) and selected == self:
                 return self.compile()
             if self.rect.collidepoint(pygame.mouse.get_pos()):
                 self.selected = True
