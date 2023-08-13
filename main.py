@@ -394,7 +394,6 @@ class MenuBlockCreator:
             raise Exception("Block already imported")
         import_blocks = __import__(self.import_win.text)
         BLOCKS += import_blocks.BLOCKS
-        print(BLOCKS)
         for block in import_blocks.BLOCKS:
             try:
                 BlockSpawner(x=20, y=(len(blocks) * 60) + 20, color=block['color'], text=block['text'], command=block['command'], arguments=block['arguments'], tab_increase=block['tab_increase'])
