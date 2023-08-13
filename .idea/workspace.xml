@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Fixed the &quot;)&quot; at the end of an input bug ;)">
+    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Tried and failed to fix some errors">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pygame-blocks.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygame-blocks.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,6 +51,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 3
@@ -75,6 +77,23 @@
     ]
   }
 }</component>
+  <component name="QodanaHighlightedReportService">
+    <option name="localRunNotPublishedPersistedInfo">
+      <LocalReportPersistedInfo>
+        <option name="path" value="/tmp/qodana_output/qodana.sarif.json" />
+        <option name="reportGuid" value="901ee654-9f57-4ce5-a50c-eedcbcd6a8d1" />
+        <option name="reportName" value="PyBlock/qodana/2023-08-13" />
+      </LocalReportPersistedInfo>
+    </option>
+  </component>
+  <component name="QodanaIsSelectedPersistenceService">
+    <option name="selectedOrLoading" value="true" />
+  </component>
+  <component name="QodanaReportsService">
+    <option name="descriptions">
+      <ReportDescription localRun="true" path="/tmp/qodana_output/qodana.sarif.json" reportGuid="901ee654-9f57-4ce5-a50c-eedcbcd6a8d1" reportId="PyBlock/qodana/2023-08-13" />
+    </option>
+  </component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="PyBlock" />
@@ -364,7 +383,23 @@
       <option name="project" value="LOCAL" />
       <updated>1691854360639</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Tried and failed to fix some errors">
+      <option name="closed" value="true" />
+      <created>1691870673999</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1691870673999</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Tried and failed to fix some errors">
+      <option name="closed" value="true" />
+      <created>1691870747919</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1691870747919</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -403,6 +438,7 @@
     <MESSAGE value="Fixed some errors, expanded the pygame-blocks &quot;plugin&quot;" />
     <MESSAGE value="Added the quit block, and changed some colors" />
     <MESSAGE value="Fixed the &quot;)&quot; at the end of an input bug ;)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed the &quot;)&quot; at the end of an input bug ;)" />
+    <MESSAGE value="Tried and failed to fix some errors" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tried and failed to fix some errors" />
   </component>
 </project>

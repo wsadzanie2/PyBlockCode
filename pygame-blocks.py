@@ -7,7 +7,6 @@ BLOCKS = [
     {'color': (255, 255, 0), 'text': "delay", 'command': 'pygame.time.delay', 'arguments': 1, 'tab_increase':0},
     {'color': (100, 200, 0), 'text': "event loop", 'command': 'for event in pygame.event.get', 'arguments': 1, 'tab_increase':1},
     {'color': (100, 200, 0), 'text': "if event.type", 'command': 'if event.type == ', 'arguments': 1, 'tab_increase':1},
-    {'color': (255, 255, 0), 'text': "quit", 'command': 'pygame.quit', 'arguments': 1, 'tab_increase':0},
     {'color': (255, 255, 0), 'text': "clock", 'command': 'clock = pygame.time.Clock', 'arguments': 1, 'tab_increase':0},
     {'color': (255, 255, 0), 'text': "DT", 'command': 'dt = clock.tick', 'arguments': 1, 'tab_increase':0},
     {'color': (255, 255, 0), 'text': "delay", 'command': 'pygame.time.delay', 'arguments': 1, 'tab_increase':0},
