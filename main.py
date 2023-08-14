@@ -410,6 +410,7 @@ class MenuBlockCreator:
             except Exception:
                 BlockSpawner(x=20, y=(len(blocks) * 60) + 20, color=block['color'], text=block['text'], command=block['command'], arguments=block['arguments'])
         imported_modules.append(self.import_win.text)
+        raise Exception("Done!")
         # self.import_win.text
     def update(self, event):
         self.update_values()

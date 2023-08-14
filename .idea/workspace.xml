@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="file no longer corrupts after failing to load it!">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="You can now click above the &quot;scroll line&quot; to scroll blocks">
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -412,7 +410,15 @@
       <option name="project" value="LOCAL" />
       <updated>1691949978470</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="You can now click above the &quot;scroll line&quot; to scroll blocks">
+      <option name="closed" value="true" />
+      <created>1692043219079</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1692043219079</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -427,7 +433,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Made the file name add into the run block by default." />
     <MESSAGE value="Fixed a bug (when you scrolled on a block it duplicated, now you have to click on it!)" />
     <MESSAGE value="Added a way to add custom blocks" />
     <MESSAGE value="Made FileLoader hide with the yellow button menu ;)" />
@@ -452,6 +457,7 @@
     <MESSAGE value="Fixed the duplicate command in pygame-blocks.py. It seems to work now!" />
     <MESSAGE value="Removed prints!" />
     <MESSAGE value="file no longer corrupts after failing to load it!" />
-    <option name="LAST_COMMIT_MESSAGE" value="file no longer corrupts after failing to load it!" />
+    <MESSAGE value="You can now click above the &quot;scroll line&quot; to scroll blocks" />
+    <option name="LAST_COMMIT_MESSAGE" value="You can now click above the &quot;scroll line&quot; to scroll blocks" />
   </component>
 </project>
