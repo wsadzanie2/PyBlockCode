@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="You can now click above the &quot;scroll line&quot; to scroll blocks">
+    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="now if you import new blocks you'll see a text &quot;Done!&quot;">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -418,7 +419,15 @@
       <option name="project" value="LOCAL" />
       <updated>1692043219079</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="now if you import new blocks you'll see a text &quot;Done!&quot;">
+      <option name="closed" value="true" />
+      <created>1692043458284</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1692043458284</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -433,7 +442,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed a bug (when you scrolled on a block it duplicated, now you have to click on it!)" />
     <MESSAGE value="Added a way to add custom blocks" />
     <MESSAGE value="Made FileLoader hide with the yellow button menu ;)" />
     <MESSAGE value="sending the newest version" />
@@ -458,6 +466,7 @@
     <MESSAGE value="Removed prints!" />
     <MESSAGE value="file no longer corrupts after failing to load it!" />
     <MESSAGE value="You can now click above the &quot;scroll line&quot; to scroll blocks" />
-    <option name="LAST_COMMIT_MESSAGE" value="You can now click above the &quot;scroll line&quot; to scroll blocks" />
+    <MESSAGE value="now if you import new blocks you'll see a text &quot;Done!&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="now if you import new blocks you'll see a text &quot;Done!&quot;" />
   </component>
 </project>

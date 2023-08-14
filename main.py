@@ -150,20 +150,21 @@ class Scroll:
         self.end_x = end_x
         self.end_y = end_y
         self.scroll_progress = 0
+        self.scroll_progress_factor = 4
     def draw(self):
         if Pressed_Down:
             self.check_buttons_pressed()
         pygame.draw.line(screen, (0, 0, 0), (self.x, self.y), (self.end_x, self.end_y), 3)
-        pygame.draw.circle(screen, (255, 255, 255), (self.x, self.scroll_progress + screen.get_height() - 20), 3)
+        pygame.draw.circle(screen, (255, 255, 255), (self.x, (100 - self.scroll_progress + 20) / self.scroll_progress_factor), 3)
     def update(self, event):
         if event.type == MOUSEWHEEL:
             self.scroll_progress += event.y * self.speed
     def check_buttons_pressed(self):
         mouse_poz = pygame.mouse.get_pos()
         if mouse_poz[0] < 10:
-            if mouse_poz[1] > self.scroll_progress + screen.get_height() - 10:
+            if mouse_poz[1] < (100 -  self.scroll_progress + 10) / self.scroll_progress_factor:
                 self.scroll_progress += self.speed
-            elif mouse_poz[1] < self.scroll_progress + screen.get_height() - 20:
+            elif mouse_poz[1] >  (100 - self.scroll_progress + 30) / self.scroll_progress_factor:
                 self.scroll_progress -= self.speed
 
 
