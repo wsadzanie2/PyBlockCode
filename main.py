@@ -151,11 +151,20 @@ class Scroll:
         self.end_y = end_y
         self.scroll_progress = 0
     def draw(self):
+        if Pressed_Down:
+            self.check_buttons_pressed()
         pygame.draw.line(screen, (0, 0, 0), (self.x, self.y), (self.end_x, self.end_y), 3)
         pygame.draw.circle(screen, (255, 255, 255), (self.x, self.scroll_progress + screen.get_height() - 20), 3)
     def update(self, event):
         if event.type == MOUSEWHEEL:
-            self.scroll_progress -= event.y * self.speed
+            self.scroll_progress += event.y * self.speed
+    def check_buttons_pressed(self):
+        mouse_poz = pygame.mouse.get_pos()
+        if mouse_poz[0] < 10:
+            if mouse_poz[1] > self.scroll_progress + screen.get_height() - 10:
+                self.scroll_progress += self.speed
+            elif mouse_poz[1] < self.scroll_progress + screen.get_height() - 20:
+                self.scroll_progress -= self.speed
 
 
 
@@ -592,7 +601,7 @@ class CodeBlock:
 
 
 load_blocks(BLOCKS)
-
+Pressed_Down = False
 # a = input('Enter file name: ')
 # if a is not '':
 #     load_file(a)
@@ -608,6 +617,10 @@ while running:
             block.update(event)
         if event.type == QUIT:
             running = False
+        if event.type == MOUSEBUTTONDOWN:
+            Pressed_Down = True
+        if event.type == MOUSEBUTTONUP:
+            Pressed_Down = False
         if event.type == KEYDOWN:
             if event.key == K_DELETE:
                 if selected is not None:

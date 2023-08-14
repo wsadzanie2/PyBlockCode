@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Removed prints!">
+    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="file no longer corrupts after failing to load it!">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -77,18 +78,6 @@
     ]
   }
 }</component>
-  <component name="QodanaHighlightedReportService">
-    <option name="localRunNotPublishedPersistedInfo">
-      <LocalReportPersistedInfo>
-        <option name="path" value="/tmp/qodana_output/qodana.sarif.json" />
-        <option name="reportGuid" value="901ee654-9f57-4ce5-a50c-eedcbcd6a8d1" />
-        <option name="reportName" value="PyBlock/qodana/2023-08-13" />
-      </LocalReportPersistedInfo>
-    </option>
-  </component>
-  <component name="QodanaIsSelectedPersistenceService">
-    <option name="selectedOrLoading" value="true" />
-  </component>
   <component name="QodanaReportsService">
     <option name="descriptions">
       <ReportDescription localRun="true" path="/tmp/qodana_output/qodana.sarif.json" reportGuid="901ee654-9f57-4ce5-a50c-eedcbcd6a8d1" reportId="PyBlock/qodana/2023-08-13" />
@@ -415,7 +404,15 @@
       <option name="project" value="LOCAL" />
       <updated>1691946908850</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="file no longer corrupts after failing to load it!">
+      <option name="closed" value="true" />
+      <created>1691949978470</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1691949978470</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -430,7 +427,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Made a GUI for loading files!" />
     <MESSAGE value="Made the file name add into the run block by default." />
     <MESSAGE value="Fixed a bug (when you scrolled on a block it duplicated, now you have to click on it!)" />
     <MESSAGE value="Added a way to add custom blocks" />
@@ -455,6 +451,7 @@
     <MESSAGE value="Tried and failed to fix some errors" />
     <MESSAGE value="Fixed the duplicate command in pygame-blocks.py. It seems to work now!" />
     <MESSAGE value="Removed prints!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed prints!" />
+    <MESSAGE value="file no longer corrupts after failing to load it!" />
+    <option name="LAST_COMMIT_MESSAGE" value="file no longer corrupts after failing to load it!" />
   </component>
 </project>
