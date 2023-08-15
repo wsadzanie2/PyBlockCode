@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Made the Scroll Class better!">
+    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Made the Scroll Class better again!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -435,7 +435,15 @@
       <option name="project" value="LOCAL" />
       <updated>1692051023202</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Made the Scroll Class better again!">
+      <option name="closed" value="true" />
+      <created>1692139436642</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1692139436642</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -450,7 +458,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Made FileLoader hide with the yellow button menu ;)" />
     <MESSAGE value="sending the newest version" />
     <MESSAGE value="Made some small changes to make PyBlockCode look better, and made it easier to use" />
     <MESSAGE value="Made it possible to &quot;import&quot; new blocks from files and added a max limit of 60 for errors displayed" />
@@ -475,6 +482,7 @@
     <MESSAGE value="You can now click above the &quot;scroll line&quot; to scroll blocks" />
     <MESSAGE value="now if you import new blocks you'll see a text &quot;Done!&quot;" />
     <MESSAGE value="Made the Scroll Class better!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made the Scroll Class better!" />
+    <MESSAGE value="Made the Scroll Class better again!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made the Scroll Class better again!" />
   </component>
 </project>

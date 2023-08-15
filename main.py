@@ -80,12 +80,13 @@ def load_file(file):
 
 
 def load_blocks(blocks):
+    RunBlockSpawner(20, 20)
     for index, block in enumerate(blocks):
         try:
             BlockSpawner(20, (index * 60) + 80, color=block['color'], text=block['text'], command=block['command'], arguments=block['arguments'], tab_increase=block['tab_increase'])
         except Exception:
             BlockSpawner(20, (index * 60) + 80, color=block['color'], text=block['text'], command=block['command'], arguments=block['arguments'])
-    RunBlockSpawner(20, 20)
+
 
 
 def reverse_color(color):
@@ -111,6 +112,7 @@ def rect_border(rect, border_size):
 class RunBlockSpawner:
     def __init__(self, x, y, width=150, height=50, color=None):
         blocks.append(self)
+        spawn_blocks.append(self)
         self.x = x
         self.y = y
         self.width = width
@@ -172,6 +174,7 @@ class Scroll:
 class BlockSpawner:
     def __init__(self, x, y, width=150, height=50, color=None, text="Default Block", command='print', arguments=1, tab_increase=0):
         blocks.append(self)
+        spawn_blocks.append(self)
         self.tab_increase = tab_increase
         self.x = x
         self.y = y
@@ -346,6 +349,7 @@ class TextInput:
 # ----------------------------------------------------------------
 
 blocks = []
+spawn_blocks = []
 text_box = TextInput(font, pygame.Rect(0, 0, 800, 600))
 scroll = Scroll(5, 0, 5, 2000)
 
@@ -412,9 +416,9 @@ class MenuBlockCreator:
         BLOCKS += import_blocks.BLOCKS
         for block in import_blocks.BLOCKS:
             try:
-                BlockSpawner(x=20, y=(len(blocks) * 60) + 20, color=block['color'], text=block['text'], command=block['command'], arguments=block['arguments'], tab_increase=block['tab_increase'])
+                BlockSpawner(x=20, y=(len(spawn_blocks) * 60) + 20, color=block['color'], text=block['text'], command=block['command'], arguments=block['arguments'], tab_increase=block['tab_increase'])
             except Exception:
-                BlockSpawner(x=20, y=(len(blocks) * 60) + 20, color=block['color'], text=block['text'], command=block['command'], arguments=block['arguments'])
+                BlockSpawner(x=20, y=(len(spawn_blocks) * 60) + 20, color=block['color'], text=block['text'], command=block['command'], arguments=block['arguments'])
         imported_modules.append(self.import_win.text)
         raise Exception("Done!")
         # self.import_win.text
@@ -609,10 +613,7 @@ class CodeBlock:
 
 load_blocks(BLOCKS)
 Pressed_Down = False
-# a = input('Enter file name: ')
-# if a is not '':
-#     load_file(a)
-#     print('File loaded')
+
 
 while running:
     screen.fill((107, 107, 18))
@@ -642,7 +643,7 @@ while running:
                         current = current.child
                         blocks.remove(current)
         scroll.update(event)
-    for block in blocks:
+    for block in reversed(blocks):
         block.draw()
     scroll.draw()
     menu_block_creator.draw()
@@ -650,3 +651,4 @@ while running:
         file_loader.draw()
     pygame.display.flip()
     clock.tick(60)
+
