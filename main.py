@@ -161,6 +161,8 @@ class Scroll:
     def update(self, event):
         if event.type == MOUSEWHEEL:
             self.scroll_progress += event.y * self.speed
+            if self.scroll_progress > 0:
+                self.scroll_progress = 0
     def check_buttons_pressed(self):
         mouse_poz = pygame.mouse.get_pos()
         if mouse_poz[0] < 10:
@@ -168,6 +170,8 @@ class Scroll:
                 self.scroll_progress += self.speed
             elif mouse_poz[1] >  (100 - self.scroll_progress + 30) / self.scroll_progress_factor:
                 self.scroll_progress -= self.speed
+        if self.scroll_progress > 0:
+            self.scroll_progress = 0
 
 
 

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Made the Scroll Class better again!">
+    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Fixed the block-spawn bug. Now blocks should spawn where they should be.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -443,7 +443,15 @@
       <option name="project" value="LOCAL" />
       <updated>1692139436642</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Fixed the block-spawn bug. Now blocks should spawn where they should be.">
+      <option name="closed" value="true" />
+      <created>1692141551571</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1692141551571</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -458,7 +466,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="sending the newest version" />
     <MESSAGE value="Made some small changes to make PyBlockCode look better, and made it easier to use" />
     <MESSAGE value="Made it possible to &quot;import&quot; new blocks from files and added a max limit of 60 for errors displayed" />
     <MESSAGE value="Fixed the FileLoader button. It no longer reacts to the scroll wheel" />
@@ -483,6 +490,7 @@
     <MESSAGE value="now if you import new blocks you'll see a text &quot;Done!&quot;" />
     <MESSAGE value="Made the Scroll Class better!" />
     <MESSAGE value="Made the Scroll Class better again!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made the Scroll Class better again!" />
+    <MESSAGE value="Fixed the block-spawn bug. Now blocks should spawn where they should be." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed the block-spawn bug. Now blocks should spawn where they should be." />
   </component>
 </project>
