@@ -200,12 +200,17 @@ class BlockSpawner:
         self.text_rect.center = self.rect.center
     def draw(self):
         self.update_values()
+        if self.rect.y <= 20:
+            return
         pygame.draw.rect(screen, self.color, self.rect)
         screen.blit(self.text_surface, self.text_rect)
 
     def update(self, event):
+        if self.rect.y <= 20:
+            return
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
-            if self.rect.collidepoint(pygame.mouse.get_pos()):
+            mouse_poz = pygame.mouse.get_pos()
+            if self.rect.collidepoint(mouse_poz) and mouse_poz[1] > 70:
                 CodeBlock(self.rect.x, self.rect.y, self.rect.width, self.rect.height, self.color, self.text, self.command, self.arguments, self.tab_increase)
 
 
