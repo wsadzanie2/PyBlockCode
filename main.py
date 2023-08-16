@@ -148,7 +148,7 @@ class Scroll:
     def __init__(self, x, y, end_x, end_y):
         self.x = x
         self.y = y
-        self.speed = 10
+        self.speed = 20
         self.end_x = end_x
         self.end_y = end_y
         self.scroll_progress = 0
@@ -213,17 +213,19 @@ class BlockSpawner:
         screen.blit(self.text_surface, self.text_rect)
 
     def update(self, event):
+        global selected
         if self.rect.y <= 20:
             return
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
             mouse_poz = pygame.mouse.get_pos()
             if self.rect.collidepoint(mouse_poz) and mouse_poz[1] > 70:
-                CodeBlock(self.rect.x, self.rect.y, self.rect.width, self.rect.height, self.color, self.text, self.command, self.arguments, self.tab_increase)
+                selected = CodeBlock(self.rect.x, self.rect.y, self.rect.width, self.rect.height, self.color, self.text, self.command, self.arguments, self.tab_increase)
+                selected.dragging = True
 
 
 class RunBlock:
     def __init__(self, x, y, width=150, height=50, color=None):
-        blocks.append(self)
+        blocks.insert(0, self)
         if color is None:
             color = random_color()
         self.tabs_increase = 0
@@ -625,7 +627,7 @@ while running:
     for event in pygame.event.get():
         menu_block_creator.update(event)
         file_loader.update(event)
-        for block in blocks:
+        for block in blocks.copy():
             block.update(event)
         if event.type == QUIT:
             running = False
