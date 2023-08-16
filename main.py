@@ -134,7 +134,7 @@ class RunBlockSpawner:
     def if_parent_selected():
         return False
     def draw(self):
-        pygame.draw.rect(screen, self.color, self.rect)
+        pygame.draw.rect(screen, (25, 200, 75), self.rect)
         pygame.draw.rect(screen, (0, 0, 0), self.button_rect)
         pygame.draw.rect(screen, (0, 255, 0), rect_border(self.button_rect, -2))
     def update(self, event):
@@ -595,19 +595,25 @@ class CodeBlock:
                 selected = None
         elif event.type == MOUSEBUTTONUP:
             self.dragging = False
+            self.check_indent()
         if self.dragging:
             if self.child is not None:
                 self.move_childs(self.child)
             self.rect.center = pygame.mouse.get_pos()
             self.snap()
-
-    def move_childs(self, child):
+    def check_indent(self, child=None):
+        if child is None:
+            child = self.child
+        if child is None:
+            return
         child.rect.midtop = self.rect.midbottom
         if self.tabs_increase > 0:
-            child.rect.x += 10
+            child.rect.x = self.rect.x + 10
         elif self.tabs_increase < 0:
-            self.rect.x -= 10
-            child.rect.x -= 10
+            child.rect.x = self.rect.x - 10
+
+    def move_childs(self, child):
+        self.check_indent(child)
         if child.child is not None:
             child.move_childs(child.child)
     def update(self, event):
