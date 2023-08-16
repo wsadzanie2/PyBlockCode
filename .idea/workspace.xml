@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Made scroll faster">
+    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Now when you hold Backspace for 600 miliseconds you'll start deleting a char every 2nd tick!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -467,7 +467,15 @@
       <option name="project" value="LOCAL" />
       <updated>1692183717934</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Now when you hold Backspace for 600 miliseconds you'll start deleting a char every 2nd tick!">
+      <option name="closed" value="true" />
+      <created>1692202653258</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1692202653258</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -482,7 +490,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed the FileLoader button. It no longer reacts to the scroll wheel" />
     <MESSAGE value="Changed the default visibility of the menu to False" />
     <MESSAGE value="Fixed some bugs. Loading 1 file multiple times no longer destroys the file" />
     <MESSAGE value="Made the run block autoselect whem you spawn it" />
@@ -507,6 +514,7 @@
     <MESSAGE value="Fixed the block-spawn bug. Now blocks should spawn where they should be." />
     <MESSAGE value="Added sys-blocks.py, and removed the quit function from Blocks.py" />
     <MESSAGE value="Made scroll faster" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made scroll faster" />
+    <MESSAGE value="Now when you hold Backspace for 600 miliseconds you'll start deleting a char every 2nd tick!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Now when you hold Backspace for 600 miliseconds you'll start deleting a char every 2nd tick!" />
   </component>
 </project>

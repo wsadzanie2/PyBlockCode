@@ -53,7 +53,8 @@ def load_file(file):
     run_block = previous_block
     for idx, line in enumerate(loaded_file_list):
         for block in BLOCKS:
-            if line.find(block['command']) != -1:
+            line_find_idx = line.find(block['command'])
+            if line_find_idx != -1 and line[line_find_idx -1] in [' ', '\n', '\t', '']:
                 try:
                     if block['command'] == '':
                         if block['tab_increase'] == 0:
@@ -602,6 +603,10 @@ class CodeBlock:
 
     def move_childs(self, child):
         child.rect.midtop = self.rect.midbottom
+        if child.tabs_increase > 0:
+            child.rect.x += 10
+        elif child.tabs_increase < 0:
+            child.rect.x -= 10
         if child.child is not None:
             child.move_childs(child.child)
     def update(self, event):
