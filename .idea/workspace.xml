@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Now when you hold Backspace for 600 miliseconds you'll start deleting a char every 2nd tick!">
+    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Made it possible to better see loops and stuff">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -475,7 +475,15 @@
       <option name="project" value="LOCAL" />
       <updated>1692202653258</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Made it possible to better see loops and stuff">
+      <option name="closed" value="true" />
+      <created>1692208494829</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1692208494829</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -490,7 +498,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changed the default visibility of the menu to False" />
     <MESSAGE value="Fixed some bugs. Loading 1 file multiple times no longer destroys the file" />
     <MESSAGE value="Made the run block autoselect whem you spawn it" />
     <MESSAGE value="You can now type even if you didn't click on a text box" />
@@ -515,6 +522,7 @@
     <MESSAGE value="Added sys-blocks.py, and removed the quit function from Blocks.py" />
     <MESSAGE value="Made scroll faster" />
     <MESSAGE value="Now when you hold Backspace for 600 miliseconds you'll start deleting a char every 2nd tick!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Now when you hold Backspace for 600 miliseconds you'll start deleting a char every 2nd tick!" />
+    <MESSAGE value="Made it possible to better see loops and stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made it possible to better see loops and stuff" />
   </component>
 </project>

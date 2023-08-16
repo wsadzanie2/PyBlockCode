@@ -603,9 +603,10 @@ class CodeBlock:
 
     def move_childs(self, child):
         child.rect.midtop = self.rect.midbottom
-        if child.tabs_increase > 0:
+        if self.tabs_increase > 0:
             child.rect.x += 10
-        elif child.tabs_increase < 0:
+        elif self.tabs_increase < 0:
+            self.rect.x -= 10
             child.rect.x -= 10
         if child.child is not None:
             child.move_childs(child.child)
