@@ -8,7 +8,7 @@ from pygame.locals import *
 
 pygame.init()
 
-
+current_time = 0
 font = pygame.font.SysFont('Arial', 20)
 screen = pygame.display.set_mode((800, 600), RESIZABLE)
 pygame.display.set_caption('PyBlockCode')
@@ -324,6 +324,7 @@ class TextInput:
         self.rect = rect
         self.text_surface = self.font.render(self.text, True, (255, 255, 255))
         self.text_rect = self.text_surface.get_rect()
+        self.time_selected = 0
 
     def update(self, event):
         if event.type == MOUSEBUTTONDOWN:
@@ -333,11 +334,17 @@ class TextInput:
         if event.type == KEYDOWN and self.selected:
             if event.key == K_BACKSPACE:
                 self.text = self.text[:-1]
+                if self.time_selected == 0:
+                    self.time_selected = pygame.time.get_ticks()
             else:
                 self.text += event.unicode
+        elif event.type == KEYUP and event.key == K_BACKSPACE:
+            self.time_selected = 0
 
 
     def update_values(self):
+        if self.time_selected > 0 and current_time - self.time_selected > 600 and tick % 2 == 0:
+            self.text = self.text[:-1]
         self.text_surface = self.font.render(self.text, True, (0, 0, 0))
         self.text_rect = self.text_surface.get_rect()
         self.text_rect.midleft = self.rect.midleft
@@ -523,7 +530,7 @@ class CodeBlock:
             self.text_input = TextInput(font, pygame.Rect(x, y, width, height), color)
         else:
             self.text_input = None
-        blocks.append(self)
+        blocks.insert(0, self)
 
         self.tabs_increase = tabs_increase
         self.arguments = arguments
@@ -619,9 +626,11 @@ class CodeBlock:
 
 load_blocks(BLOCKS)
 Pressed_Down = False
-
+tick = 0
 
 while running:
+    tick += 1
+    current_time = pygame.time.get_ticks()
     screen.fill((107, 107, 18))
     pygame.draw.rect(screen, (100, 100, 80), pygame.Rect(0, 0, 200, 2000))
     for event in pygame.event.get():

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Added sys-blocks.py, and removed the quit function from Blocks.py">
+    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Made scroll faster">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -459,7 +459,15 @@
       <option name="project" value="LOCAL" />
       <updated>1692180820911</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Made scroll faster">
+      <option name="closed" value="true" />
+      <created>1692183717934</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1692183717934</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -474,7 +482,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Made it possible to &quot;import&quot; new blocks from files and added a max limit of 60 for errors displayed" />
     <MESSAGE value="Fixed the FileLoader button. It no longer reacts to the scroll wheel" />
     <MESSAGE value="Changed the default visibility of the menu to False" />
     <MESSAGE value="Fixed some bugs. Loading 1 file multiple times no longer destroys the file" />
@@ -499,6 +506,7 @@
     <MESSAGE value="Made the Scroll Class better again!" />
     <MESSAGE value="Fixed the block-spawn bug. Now blocks should spawn where they should be." />
     <MESSAGE value="Added sys-blocks.py, and removed the quit function from Blocks.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added sys-blocks.py, and removed the quit function from Blocks.py" />
+    <MESSAGE value="Made scroll faster" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made scroll faster" />
   </component>
 </project>
