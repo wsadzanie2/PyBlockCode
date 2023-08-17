@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Made it possible to better see loops and stuff">
+    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Added check_indent function.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blocks.py" beforeDir="false" afterPath="$PROJECT_DIR$/Blocks.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -491,7 +491,15 @@
       <option name="project" value="LOCAL" />
       <updated>1692214263442</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Added check_indent function.">
+      <option name="closed" value="true" />
+      <created>1692225555430</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1692225555430</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -506,7 +514,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed some bugs. Loading 1 file multiple times no longer destroys the file" />
     <MESSAGE value="Made the run block autoselect whem you spawn it" />
     <MESSAGE value="You can now type even if you didn't click on a text box" />
     <MESSAGE value="Made the Text Boxes a bit better" />
@@ -531,6 +538,7 @@
     <MESSAGE value="Made scroll faster" />
     <MESSAGE value="Now when you hold Backspace for 600 miliseconds you'll start deleting a char every 2nd tick!" />
     <MESSAGE value="Made it possible to better see loops and stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made it possible to better see loops and stuff" />
+    <MESSAGE value="Added check_indent function." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added check_indent function." />
   </component>
 </project>
