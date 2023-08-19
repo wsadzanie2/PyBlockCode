@@ -550,6 +550,7 @@ class CodeBlock:
         self.text_rect = self.text_surface.get_rect()
         self.text_rect.center = self.rect.center
     def draw(self):
+        self.check_indent()
         self.update_values()
         if self.if_parent_selected():
             pygame.draw.rect(screen, (0, 0, 0), pygame.Rect(self.x - 2, self.y - 2, self.width + 4, self.height + 4))
@@ -605,12 +606,16 @@ class CodeBlock:
         if child is None:
             child = self.child
         if child is None:
+            if self.tabs_increase < 0:
+                self.rect.x -= 10
             return
         child.rect.midtop = self.rect.midbottom
         if self.tabs_increase > 0:
             child.rect.x = self.rect.x + 10
         elif self.tabs_increase < 0:
             child.rect.x = self.rect.x - 10
+            if self.parent is not None:
+                self.rect.x = self.parent.rect.x - 10
 
     def move_childs(self, child):
         self.check_indent(child)
