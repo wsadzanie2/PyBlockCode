@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Changed Blocks.py slightly">
+    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Made indentation work slightly better">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -114,14 +114,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1687800228992</updated>
-    </task>
-    <task id="LOCAL-00001" summary="This is my PyBlock project. It will allow childs to learn programming quicker!">
-      <option name="closed" value="true" />
-      <created>1691352242589</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1691352242589</updated>
     </task>
     <task id="LOCAL-00002" summary="This is my PyBlock project. It will allow childs to learn programming quicker!">
       <option name="closed" value="true" />
@@ -507,7 +499,15 @@
       <option name="project" value="LOCAL" />
       <updated>1692290991574</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Made indentation work slightly better">
+      <option name="closed" value="true" />
+      <created>1692463182226</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1692463182226</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -522,7 +522,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="You can now type even if you didn't click on a text box" />
     <MESSAGE value="Made the Text Boxes a bit better" />
     <MESSAGE value="Fixed something" />
     <MESSAGE value="Added specific colors to each block" />
@@ -547,6 +546,7 @@
     <MESSAGE value="Made it possible to better see loops and stuff" />
     <MESSAGE value="Added check_indent function." />
     <MESSAGE value="Changed Blocks.py slightly" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed Blocks.py slightly" />
+    <MESSAGE value="Made indentation work slightly better" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made indentation work slightly better" />
   </component>
 </project>

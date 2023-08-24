@@ -45,6 +45,7 @@ def count_spaces(string):
 
 def load_file(file):
     loaded_file_list = []
+    found_block = False
     with open(file, 'r') as f:
         for line in f:
             loaded_file_list.append(line)
@@ -52,6 +53,7 @@ def load_file(file):
     previous_block.text_input.text = file
     run_block = previous_block
     for idx, line in enumerate(loaded_file_list):
+        found_block = False
         for block in BLOCKS:
             line_find_idx = line.find(block['command'])
             if line_find_idx != -1 and line[line_find_idx -1] in [' ', '\n', '\t', '']:
@@ -62,15 +64,22 @@ def load_file(file):
                         if count_spaces(line) - count_spaces(loaded_file_list[idx+1]) != 4:
                             continue
                     current_block = CodeBlock(previous_block.x, previous_block.y + (idx * 50), color=block['color'], text=block['text'], command=block['command'], arguments=block['arguments'], tabs_increase=block['tab_increase'])
+                    found_block = True
                 except Exception:
                     if block['command'] == '':
                         continue
                     current_block = CodeBlock(previous_block.x, previous_block.y + (idx * 50), color=block['color'], text=block['text'], command=block['command'], arguments=block['arguments'])
+                    found_block = True
                 if block['arguments'] > 0:
                     current_block.text_input.text = get_arguments(loaded_file_list[idx])
                 current_block.parent = previous_block
                 previous_block.child = current_block
                 previous_block = current_block
+        if not found_block and (not (line in [' ', '\n', '\t', ''])):
+            current_block = CodeBlock(previous_block.x, previous_block.y + (idx * 50), color=None, text=f'? {line[:-1].lstrip()} ?', command=line[:-1], arguments=0)
+            current_block.parent = previous_block
+            previous_block.child = current_block
+            previous_block = current_block
     run_block.move_childs(run_block.child)
 
 
@@ -606,7 +615,7 @@ class CodeBlock:
         if child is None:
             child = self.child
         if child is None:
-            if self.tabs_increase < 0:
+            if self.tabs_increase < 0 and self.parent is not None:
                 self.rect.x -= 10
             return
         child.rect.midtop = self.rect.midbottom
