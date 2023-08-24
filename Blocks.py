@@ -1,3 +1,6 @@
+sys = __import__('sys-blocks')
+pygame = __import__('pygame-blocks')
+
 BLOCKS = [
     {'color': (100, 200, 0), 'text': "For", 'command': 'for i in range', 'arguments': 1, 'tab_increase': 1},
     {'color': (100, 200, 0), 'text': "Else", 'command': 'else:', 'arguments': 0, 'tab_increase': 1},
@@ -16,3 +19,5 @@ BLOCKS = [
     {'color': (46, 194, 126), 'text': "Floor Divide", 'command': 'result = (lambda x, y: x // y)', 'arguments': 2},
     {'color': (46, 194, 126), 'text': "Absolute Value", 'command': 'result = abs', 'arguments': 1},
 ]
+BLOCKS += pygame.BLOCKS
+BLOCKS += sys.BLOCKS

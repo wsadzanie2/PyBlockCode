@@ -43,6 +43,7 @@ def count_spaces(string):
         if string[i] !=' ':
             return i
 
+
 def load_file(file):
     loaded_file_list = []
     found_block = False
@@ -76,7 +77,7 @@ def load_file(file):
                 previous_block.child = current_block
                 previous_block = current_block
         if not found_block and (not (line in [' ', '\n', '\t', ''])):
-            current_block = CodeBlock(previous_block.x, previous_block.y + (idx * 50), color=None, text=f'? {line[:-1].lstrip()} ?', command=line[:-1], arguments=0)
+            current_block = CodeBlock(previous_block.x, previous_block.y + (idx * 50), color=None, text=f'? {line[:-1].lstrip().rstrip()} ?', command=line[:-1], arguments=0)
             current_block.parent = previous_block
             previous_block.child = current_block
             previous_block = current_block
@@ -605,7 +606,6 @@ class CodeBlock:
                 selected = None
         elif event.type == MOUSEBUTTONUP:
             self.dragging = False
-            self.check_indent()
         if self.dragging:
             if self.child is not None:
                 self.move_childs(self.child)

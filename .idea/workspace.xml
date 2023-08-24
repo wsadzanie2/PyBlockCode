@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Made indentation work slightly better">
+    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Fixed some errors. Now it's possible to load all python files">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blocks.py" beforeDir="false" afterPath="$PROJECT_DIR$/Blocks.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -114,14 +115,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1687800228992</updated>
-    </task>
-    <task id="LOCAL-00002" summary="This is my PyBlock project. It will allow childs to learn programming quicker!">
-      <option name="closed" value="true" />
-      <created>1691352858101</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1691352858101</updated>
     </task>
     <task id="LOCAL-00003" summary="This is my PyBlock project. It will allow childs to learn programming quicker!">
       <option name="closed" value="true" />
@@ -507,7 +500,15 @@
       <option name="project" value="LOCAL" />
       <updated>1692463182226</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Fixed some errors. Now it's possible to load all python files">
+      <option name="closed" value="true" />
+      <created>1692883899470</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1692883899470</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -522,7 +523,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Made the Text Boxes a bit better" />
     <MESSAGE value="Fixed something" />
     <MESSAGE value="Added specific colors to each block" />
     <MESSAGE value="Added basic support for pygame with pygame-blocks.py and made it easier to load other blocks" />
@@ -547,6 +547,7 @@
     <MESSAGE value="Added check_indent function." />
     <MESSAGE value="Changed Blocks.py slightly" />
     <MESSAGE value="Made indentation work slightly better" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made indentation work slightly better" />
+    <MESSAGE value="Fixed some errors. Now it's possible to load all python files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed some errors. Now it's possible to load all python files" />
   </component>
 </project>
