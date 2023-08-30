@@ -1,5 +1,7 @@
 import pygame
 import random
+import os
+
 try:
     from Blocks import BLOCKS
 except Exception:
@@ -28,8 +30,6 @@ def get_last_char(string, char):
             return len(string) - idx - 1
 
 
-
-
 def get_arguments(command):
     mystr = command[1:]
     char1 = '('
@@ -38,15 +38,15 @@ def get_arguments(command):
     second_char_idx = get_last_char(mystr, char2)
     return mystr[first_char_idx + 1: second_char_idx]
 
+
 def count_spaces(string):
     for i in range(len(string)):
-        if string[i] !=' ':
+        if string[i] != ' ':
             return i
 
 
 def load_file(file):
     loaded_file_list = []
-    found_block = False
     with open(file, 'r') as f:
         for line in f:
             loaded_file_list.append(line)
@@ -57,19 +57,23 @@ def load_file(file):
         found_block = False
         for block in BLOCKS:
             line_find_idx = line.find(block['command'])
-            if line_find_idx != -1 and line[line_find_idx -1] in [' ', '\n', '\t', '']:
+            if line_find_idx != -1 and line[line_find_idx - 1] in [' ', '\n', '\t', '']:
                 try:
                     if block['command'] == '':
                         if block['tab_increase'] == 0:
                             continue
-                        if count_spaces(line) - count_spaces(loaded_file_list[idx+1]) != 4:
+                        if count_spaces(line) - count_spaces(loaded_file_list[idx + 1]) != 4:
                             continue
-                    current_block = CodeBlock(previous_block.x, previous_block.y + (idx * 50), color=block['color'], text=block['text'], command=block['command'], arguments=block['arguments'], tabs_increase=block['tab_increase'])
+                    current_block = CodeBlock(previous_block.x, previous_block.y + (idx * 50), color=block['color'],
+                                              text=block['text'], command=block['command'],
+                                              arguments=block['arguments'], tabs_increase=block['tab_increase'])
                     found_block = True
                 except Exception:
                     if block['command'] == '':
                         continue
-                    current_block = CodeBlock(previous_block.x, previous_block.y + (idx * 50), color=block['color'], text=block['text'], command=block['command'], arguments=block['arguments'])
+                    current_block = CodeBlock(previous_block.x, previous_block.y + (idx * 50), color=block['color'],
+                                              text=block['text'], command=block['command'],
+                                              arguments=block['arguments'])
                     found_block = True
                 if block['arguments'] > 0:
                     current_block.text_input.text = get_arguments(loaded_file_list[idx])
@@ -77,27 +81,23 @@ def load_file(file):
                 previous_block.child = current_block
                 previous_block = current_block
         if not found_block and (not (line in [' ', '\n', '\t', ''])):
-            current_block = CodeBlock(previous_block.x, previous_block.y + (idx * 50), color=None, text=f'? {line[:-1].lstrip().rstrip()} ?', command=line[:-1], arguments=0)
+            current_block = CodeBlock(previous_block.x, previous_block.y + (idx * 50), color=None,
+                                      text=f'? {line[:-1].lstrip().rstrip()} ?', command=line[:-1], arguments=0)
             current_block.parent = previous_block
             previous_block.child = current_block
             previous_block = current_block
     run_block.move_childs(run_block.child)
 
 
-
-
-
-
-
-
 def load_blocks(blocks):
     RunBlockSpawner(20, 20)
     for index, block in enumerate(blocks):
         try:
-            BlockSpawner(20, (index * 60) + 80, color=block['color'], text=block['text'], command=block['command'], arguments=block['arguments'], tab_increase=block['tab_increase'])
+            BlockSpawner(20, (index * 60) + 80, color=block['color'], text=block['text'], command=block['command'],
+                         arguments=block['arguments'], tab_increase=block['tab_increase'])
         except Exception:
-            BlockSpawner(20, (index * 60) + 80, color=block['color'], text=block['text'], command=block['command'], arguments=block['arguments'])
-
+            BlockSpawner(20, (index * 60) + 80, color=block['color'], text=block['text'], command=block['command'],
+                         arguments=block['arguments'])
 
 
 def reverse_color(color):
@@ -120,6 +120,7 @@ def rect_border(rect, border_size):
     return pygame.Rect(rect.x - border_size, rect.y - border_size, rect.width + (2 * border_size),
                        rect.height + (2 * border_size))
 
+
 class RunBlockSpawner:
     def __init__(self, x, y, width=150, height=50, color=None):
         blocks.append(self)
@@ -136,6 +137,7 @@ class RunBlockSpawner:
         self.button_rect = pygame.Rect(25, 25, 25, 25)
         self.button_rect.midleft = self.rect.midleft
         self.button_rect.left = self.rect.left + 10
+
     @staticmethod
     def is_parent(_):
         return False
@@ -143,10 +145,12 @@ class RunBlockSpawner:
     @staticmethod
     def if_parent_selected():
         return False
+
     def draw(self):
         pygame.draw.rect(screen, (25, 200, 75), self.rect)
         pygame.draw.rect(screen, (0, 0, 0), self.button_rect)
         pygame.draw.rect(screen, (0, 255, 0), rect_border(self.button_rect, -2))
+
     def update(self, event):
         global selected
         if event.type == pygame.MOUSEBUTTONDOWN:
@@ -164,30 +168,34 @@ class Scroll:
         self.end_y = end_y
         self.scroll_progress = 0
         self.scroll_progress_factor = 4
+
     def draw(self):
         if Pressed_Down:
             self.check_buttons_pressed()
         pygame.draw.line(screen, (0, 0, 0), (self.x, self.y), (self.end_x, self.end_y), 3)
-        pygame.draw.circle(screen, (255, 255, 255), (self.x, (100 - self.scroll_progress + 20) / self.scroll_progress_factor), 3)
+        pygame.draw.circle(screen, (255, 255, 255),
+                           (self.x, (100 - self.scroll_progress + 20) / self.scroll_progress_factor), 3)
+
     def update(self, event):
         if event.type == MOUSEWHEEL:
             self.scroll_progress += event.y * self.speed
             if self.scroll_progress > 0:
                 self.scroll_progress = 0
+
     def check_buttons_pressed(self):
         mouse_poz = pygame.mouse.get_pos()
         if mouse_poz[0] < 10:
-            if mouse_poz[1] < (100 -  self.scroll_progress + 10) / self.scroll_progress_factor:
+            if mouse_poz[1] < (100 - self.scroll_progress + 10) / self.scroll_progress_factor:
                 self.scroll_progress += self.speed
-            elif mouse_poz[1] >  (100 - self.scroll_progress + 30) / self.scroll_progress_factor:
+            elif mouse_poz[1] > (100 - self.scroll_progress + 30) / self.scroll_progress_factor:
                 self.scroll_progress -= self.speed
         if self.scroll_progress > 0:
             self.scroll_progress = 0
 
 
-
 class BlockSpawner:
-    def __init__(self, x, y, width=150, height=50, color=None, text="Default Block", command='print', arguments=1, tab_increase=0):
+    def __init__(self, x, y, width=150, height=50, color=None, text="Default Block", command='print', arguments=1,
+                 tab_increase=0):
         blocks.append(self)
         spawn_blocks.append(self)
         self.tab_increase = tab_increase
@@ -207,8 +215,10 @@ class BlockSpawner:
         self.text_rect.center = self.rect.center
         self.command = command
         self.arguments = arguments
+
     def is_parent(self, _):
         return self.selected
+
     @staticmethod
     def if_parent_selected():
         return False
@@ -216,6 +226,7 @@ class BlockSpawner:
     def update_values(self):
         self.rect = pygame.Rect(self.x, self.y + scroll.scroll_progress, self.width, self.height)
         self.text_rect.center = self.rect.center
+
     def draw(self):
         self.update_values()
         if self.rect.y <= 20:
@@ -230,7 +241,8 @@ class BlockSpawner:
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
             mouse_poz = pygame.mouse.get_pos()
             if self.rect.collidepoint(mouse_poz) and mouse_poz[1] > 70:
-                selected = CodeBlock(self.rect.x, self.rect.y, self.rect.width, self.rect.height, self.color, self.text, self.command, self.arguments, self.tab_increase)
+                selected = CodeBlock(self.rect.x, self.rect.y, self.rect.width, self.rect.height, self.color, self.text,
+                                     self.command, self.arguments, self.tab_increase)
                 selected.dragging = True
 
 
@@ -261,8 +273,10 @@ class RunBlock:
         self.selected = False
         self.button_rect = pygame.Rect(25, 25, 25, 25)
         self.button_rect.left = self.rect.left + 10
+
     def is_parent(self, _):
         return self.selected
+
     def draw(self):
         global selected
         self.update_values()
@@ -289,12 +303,13 @@ class RunBlock:
         with open(self.text_input.text, 'w') as file:
             while current.child is not None:
                 if current.child.arguments > 0:
-                    file.write('    '*tabs + current.child.command + '(' + current.child.text_input.text.strip(',') + ')')
+                    file.write(
+                        '    ' * tabs + current.child.command + '(' + current.child.text_input.text.strip(',') + ')')
                     if current.child.tabs_increase > 0:
                         file.write(':')
                     file.write('\n')
                 else:
-                    file.write('    '*tabs + current.child.command)
+                    file.write('    ' * tabs + current.child.command)
                     file.write('\n')
                 current = current.child
                 tabs += current.tabs_increase
@@ -352,7 +367,6 @@ class TextInput:
         elif event.type == KEYUP and event.key == K_BACKSPACE:
             self.time_selected = 0
 
-
     def update_values(self):
         if self.time_selected > 0 and current_time - self.time_selected > 600 and tick % 2 == 0:
             self.text = self.text[:-1]
@@ -378,7 +392,6 @@ text_box = TextInput(font, pygame.Rect(0, 0, 800, 600))
 scroll = Scroll(5, 0, 5, 2000)
 
 
-
 class MenuBlockCreator:
     def __init__(self, x=210, y=300):
         self.x = x
@@ -392,10 +405,12 @@ class MenuBlockCreator:
         self.args_win.text = "0"
         self.button_rect = pygame.Rect(25, 25, 30, 30)
         self.show_hide_rect = pygame.Rect(25, 25, 30, 30)
-        self.import_win = TextInput(font, pygame.Rect(0, 0, 130, 30), background=(255, 0, 255), text='Add New Blocks here!')
+        self.import_win = TextInput(font, pygame.Rect(0, 0, 130, 30), background=(255, 0, 255),
+                                    text='Add New Blocks here!')
         self.import_rect = pygame.Rect(25, 25, 30, 30)
         self.selected = None
         self.visible = False
+
     def update_values(self):
         self.text_win.rect.midleft = self.rect.midleft
         self.command_win.rect.midleft = self.rect.midleft
@@ -414,6 +429,7 @@ class MenuBlockCreator:
         self.import_rect.midleft = self.rect.midleft
         self.import_rect.y -= 50
         self.import_rect.x += 10
+
     def draw(self):
         self.update_values()
         if self.visible:
@@ -428,10 +444,13 @@ class MenuBlockCreator:
             pygame.draw.rect(screen, (0, 255, 0), rect_border(self.import_rect, -3))
         pygame.draw.rect(screen, (0, 0, 0), self.show_hide_rect)
         pygame.draw.rect(screen, (255, 255, 0), rect_border(self.show_hide_rect, -3))
+
     def spawn_block(self):
         index = len(blocks)
-        BlockSpawner(x=20, y=(index * 60) + 20, color=None, text=self.text_win.text, command=self.command_win.text, arguments=int(self.args_win.text))
+        BlockSpawner(x=20, y=(index * 60) + 20, color=None, text=self.text_win.text, command=self.command_win.text,
+                     arguments=int(self.args_win.text))
         self.selected = None
+
     def load_import_block(self):
         global BLOCKS
         if self.import_win.text in imported_modules:
@@ -440,16 +459,21 @@ class MenuBlockCreator:
         BLOCKS += import_blocks.BLOCKS
         for block in import_blocks.BLOCKS:
             try:
-                BlockSpawner(x=20, y=(len(spawn_blocks) * 60) + 20, color=block['color'], text=block['text'], command=block['command'], arguments=block['arguments'], tab_increase=block['tab_increase'])
+                BlockSpawner(x=20, y=(len(spawn_blocks) * 60) + 20, color=block['color'], text=block['text'],
+                             command=block['command'], arguments=block['arguments'], tab_increase=block['tab_increase'])
             except Exception:
-                BlockSpawner(x=20, y=(len(spawn_blocks) * 60) + 20, color=block['color'], text=block['text'], command=block['command'], arguments=block['arguments'])
+                BlockSpawner(x=20, y=(len(spawn_blocks) * 60) + 20, color=block['color'], text=block['text'],
+                             command=block['command'], arguments=block['arguments'])
         imported_modules.append(self.import_win.text)
         raise Exception("Done!")
         # self.import_win.text
+
     def update(self, event):
         self.update_values()
         global selected
         if event.type == MOUSEBUTTONDOWN and event.button == 1:
+            if file_manager.visible:
+                self.visible = False
             if self.button_rect.collidepoint(pygame.mouse.get_pos()):
                 self.selected = self.button_rect
             if self.show_hide_rect.collidepoint(pygame.mouse.get_pos()):
@@ -489,6 +513,7 @@ class MenuBlockCreator:
             if self.selected == self.import_win:
                 self.import_win.update(event)
 
+
 class FileLoader:
     def __init__(self, x, y):
         self.x = x
@@ -498,6 +523,7 @@ class FileLoader:
         self.text_win.text = "File Loader"
         self.button_rect = pygame.Rect(25, 25, 25, 25)
         self.selected = False
+
     def update_values(self):
         self.button_rect.center = self.rect.center
         self.button_rect.left = self.rect.left + 10
@@ -510,6 +536,7 @@ class FileLoader:
         self.text_win.draw(screen)
         pygame.draw.rect(screen, (0, 0, 0), self.button_rect)
         pygame.draw.rect(screen, (0, 255, 0), rect_border(self.button_rect, -3))
+
     def update(self, event):
         global selected
         if event.type == MOUSEBUTTONDOWN and event.button == 1:
@@ -530,11 +557,58 @@ class FileLoader:
         if selected == self:
             self.text_win.update(event)
 
+#TODO: Make a working file manager!
+class FileManager:
+    def __init__(self, x, y):
+        global font
+        self.font = font
+        self.x = x
+        self.y = y
+        self.rect = pygame.Rect(self.x, self.y, 200, 250)
+        self.text_win = TextInput(font, pygame.Rect(0, 0, 130, 30), background=(255, 0, 255))
+        self.text_win.text = "File Manager"
+        self.button_rect = pygame.Rect(x, y, 30, 30)
+        self.selected = False
+        self.visible = False
+        self.text = font.render(os.getcwd(), True, (255, 255, 255))
+        self.text_rect = self.text.get_rect()
+        self.text_rect.topleft = self.rect.topleft
+    def draw(self):
+        self.update_values()
+        if self.visible:
+            pygame.draw.rect(screen, (0, 0, 255), self.rect)
+            pygame.draw.rect(screen, (25, 25, 25), self.text_rect)
+            screen.blit(self.text, (self.rect.x + 50, self.rect.y + 5))
+        pygame.draw.rect(screen, (0, 0, 0), self.button_rect)
+        pygame.draw.rect(screen, (0, 255, 0), rect_border(self.button_rect, -3))
+    def update_values(self):
+        self.text = font.render(os.getcwd(), True, (255, 255, 255))
+        self.text_rect = rect_border(self.text.get_rect(), 6)
+        self.text_rect.topleft = (self.rect.x + 44, self.rect.y + 2)
+    def update(self, event):
+        global selected
+        if event.type == MOUSEBUTTONDOWN and event.button == 1:
+            if menu_block_creator.visible:
+                self.visible = False
+                return
+            if self.button_rect.collidepoint(pygame.mouse.get_pos()):
+                self.selected = True
+                selected = self
+                self.visible = not self.visible
+        elif event.type == MOUSEBUTTONUP:
+            self.selected = False
+            if selected == self:
+                selected = None
+
+
 file_loader = FileLoader(290, 10)
 menu_block_creator = MenuBlockCreator(y=10)
+file_manager = FileManager(210, 60)
+
 
 class CodeBlock:
-    def __init__(self, x, y, width=150, height=50, color=None, text="Default Block", command='print', arguments=1, tabs_increase=0):
+    def __init__(self, x, y, width=150, height=50, color=None, text="Default Block", command='print', arguments=1,
+                 tabs_increase=0):
         if color is None:
             color = random_color()
         if arguments > 0:
@@ -559,6 +633,7 @@ class CodeBlock:
         self.text_surface = font.render(self.text, True, (0, 0, 0))
         self.text_rect = self.text_surface.get_rect()
         self.text_rect.center = self.rect.center
+
     def draw(self):
         self.check_indent()
         self.update_values()
@@ -568,19 +643,23 @@ class CodeBlock:
         if self.text_input is not None:
             self.text_input.draw(screen)
         screen.blit(self.text_surface, self.text_rect)
+
     def copy(self):
         return self
+
     def is_parent(self, parent):
         if parent == self:
             return True
         if self.parent is not None:
             return self.parent.is_parent(parent)
         return False
+
     def snap(self):
         for block in blocks:
             if block == self:
                 continue
-            if block.rect.collidepoint(pygame.mouse.get_pos()) and (isinstance(block, CodeBlock) or isinstance(block, RunBlock)):
+            if block.rect.collidepoint(pygame.mouse.get_pos()) and (
+                    isinstance(block, CodeBlock) or isinstance(block, RunBlock)):
                 if not block.is_parent(self):
                     self.rect.midtop = block.rect.midbottom
                     block.child = self
@@ -588,6 +667,7 @@ class CodeBlock:
             elif block.child == self:
                 block.child = None
                 self.parent = None
+
     def update_values(self):
         if self.text_input is not None:
             self.text_input.rect.midleft = self.rect.midright
@@ -596,6 +676,7 @@ class CodeBlock:
         self.y = self.rect.y
         self.width = self.rect.width
         self.height = self.rect.height
+
     def drag(self, event):
         global selected
         if event.type == MOUSEBUTTONDOWN:
@@ -611,6 +692,7 @@ class CodeBlock:
                 self.move_childs(self.child)
             self.rect.center = pygame.mouse.get_pos()
             self.snap()
+
     def check_indent(self, child=None):
         if child is None:
             child = self.child
@@ -630,11 +712,13 @@ class CodeBlock:
         self.check_indent(child)
         if child.child is not None:
             child.move_childs(child.child)
+
     def update(self, event):
         global selected
         if selected == self and self.text_input is not None:
             self.text_input.update(event)
         self.drag(event)
+
     def if_parent_selected(self):
         global selected
         if selected == self:
@@ -642,7 +726,6 @@ class CodeBlock:
         if self.parent is not None:
             return self.parent.if_parent_selected()
         return False
-
 
     def run(self):
         exec(self.command)
@@ -662,6 +745,7 @@ while running:
     for event in pygame.event.get():
         menu_block_creator.update(event)
         file_loader.update(event)
+        file_manager.update(event)
         for block in blocks.copy():
             block.update(event)
         if event.type == QUIT:
@@ -684,6 +768,7 @@ while running:
                         current = current.child
                         blocks.remove(current)
         scroll.update(event)
+    file_manager.draw()
     for block in reversed(blocks):
         block.draw()
     scroll.draw()
@@ -692,4 +777,3 @@ while running:
         file_loader.draw()
     pygame.display.flip()
     clock.tick(60)
-
