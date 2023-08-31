@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Now 2 modules will be added by default">
+    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Added a new button that shows the current working directiory. (Needs to be worked on!)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
@@ -69,7 +69,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/pawel/PycharmProjects/PyBlock&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/pawel/PycharmProjects/TerminalFileManager&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -114,14 +114,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1687800228992</updated>
-    </task>
-    <task id="LOCAL-00004" summary="This is my PyBlock project. It will allow childs to learn programming quicker!">
-      <option name="closed" value="true" />
-      <created>1691355512457</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1691355512457</updated>
     </task>
     <task id="LOCAL-00005" summary="This is my PyBlock project. It will allow childs to learn programming quicker!">
       <option name="closed" value="true" />
@@ -507,7 +499,15 @@
       <option name="project" value="LOCAL" />
       <updated>1692884757945</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Added a new button that shows the current working directiory. (Needs to be worked on!)">
+      <option name="closed" value="true" />
+      <created>1693415203561</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1693415203561</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -522,7 +522,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added specific colors to each block" />
     <MESSAGE value="Added basic support for pygame with pygame-blocks.py and made it easier to load other blocks" />
     <MESSAGE value="Expanded the pygame-blocks &quot;plugin&quot;" />
     <MESSAGE value="Fixed some errors!" />
@@ -547,6 +546,7 @@
     <MESSAGE value="Made indentation work slightly better" />
     <MESSAGE value="Fixed some errors. Now it's possible to load all python files" />
     <MESSAGE value="Now 2 modules will be added by default" />
-    <option name="LAST_COMMIT_MESSAGE" value="Now 2 modules will be added by default" />
+    <MESSAGE value="Added a new button that shows the current working directiory. (Needs to be worked on!)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a new button that shows the current working directiory. (Needs to be worked on!)" />
   </component>
 </project>

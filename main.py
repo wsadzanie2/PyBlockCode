@@ -492,8 +492,10 @@ class MenuBlockCreator:
                 self.selected = self.import_win
         if self.selected == self.show_hide_rect:
             self.visible = not self.visible
+            if self.visible:
+                file_loader.text_win.text = 'File Loader'
             self.selected = None
-        if selected is None:
+        if selected is None and self.visible:
             if self.selected == self.text_win:
                 self.text_win.update(event)
             if self.selected == self.command_win:
@@ -557,7 +559,7 @@ class FileLoader:
         if selected == self:
             self.text_win.update(event)
 
-#TODO: Make a working file manager!
+
 class FileManager:
     def __init__(self, x, y):
         global font
@@ -568,35 +570,126 @@ class FileManager:
         self.text_win = TextInput(font, pygame.Rect(0, 0, 130, 30), background=(255, 0, 255))
         self.text_win.text = "File Manager"
         self.button_rect = pygame.Rect(x, y, 30, 30)
+        self.back_button_rect = pygame.Rect(x + 32, y, 30, 30)
         self.selected = False
         self.visible = False
         self.text = font.render(os.getcwd(), True, (255, 255, 255))
         self.text_rect = self.text.get_rect()
         self.text_rect.topleft = self.rect.topleft
+        self.scroll_poz = self.scroll_x, self.scroll_y = (0, -100)
+        self.scroll_rect = pygame.Rect((0, 0), (10, self.rect.height))
+        self.scroll_rect.topleft = self.rect.topleft
+        self.scrolling = False
+        self.temp_rect = pygame.Rect(0, 0, 0, 0)
+        self.temp_idx = None
+
+    def draw_scroll(self):
+        pygame.draw.line(screen, (0, 0, 0), (self.rect.left + 5, self.rect.top + 5), (self.rect.left + 5, self.rect.bottom - 5), 2)
+        if -self.scroll_y + self.rect.top < self.rect.height + 55:
+            pygame.draw.circle(screen, (255, 255, 255), (self.scroll_x + self.rect.left + 5, -self.scroll_y + self.rect.top + 5), 2)
+        else:
+            pygame.draw.circle(screen, (255, 255, 255), (self.scroll_x + self.rect.left + 5, self.rect.height + 55), 2)
+
+    def update_scroll(self, event):
+        if event.type == MOUSEBUTTONDOWN and event.button == 1:
+            if self.scroll_rect.collidepoint(pygame.mouse.get_pos()):
+                self.scrolling = True
+
+
+
     def draw(self):
         self.update_values()
         if self.visible:
             pygame.draw.rect(screen, (0, 0, 255), self.rect)
             pygame.draw.rect(screen, (25, 25, 25), self.text_rect)
-            screen.blit(self.text, (self.rect.x + 50, self.rect.y + 5))
+            screen.blit(self.text, (self.rect.x + 70, self.rect.y + 5))
+            self.draw_tree()
+            self.draw_scroll()
+            pygame.draw.rect(screen, (0, 0, 0), self.back_button_rect)
+            pygame.draw.rect(screen, (255, 0, 0), rect_border(self.back_button_rect, -3))
         pygame.draw.rect(screen, (0, 0, 0), self.button_rect)
         pygame.draw.rect(screen, (0, 255, 0), rect_border(self.button_rect, -3))
+
+
+
+    def draw_tree(self):
+        ridx = 0
+        for idx, thingy in enumerate(os.listdir(os.getcwd())):
+            ridx += 1
+            if file_loader.text_win.text not in thingy:
+                ridx -= 1
+                continue
+            if abs(self.scroll_y // 25) > ridx or (abs(self.scroll_y) + self.rect.height) // 25 < ridx + 3:
+                continue
+            self.temp_rect = pygame.Rect((self.rect.x + 10, self.rect.y + self.scroll_y + 50 + ridx * 25),
+                                    (self.rect.width - 10, 25))
+            if self.temp_rect.collidepoint(pygame.mouse.get_pos()):
+                pygame.draw.rect(screen, (0, 0, 0), self.temp_rect)
+                self.temp_idx = idx
+            elif self.temp_idx == ridx:
+                self.temp_idx = None
+            if os.path.isdir(thingy):
+                screen.blit(self.font.render(thingy, True, (255, 255, 255)), (self.rect.x + 10, self.rect.y + self.scroll_y + 50 + ridx * 25))
+            else:
+                screen.blit(self.font.render(thingy, True, (0, 255, 0)), (self.rect.x + 10, self.rect.y + self.scroll_y + 50 + ridx * 25))
+        if ridx < 3 and not self.scrolling:
+            self.scroll_y = -20
+        if self.scroll_y < ridx * -25 + 5:
+            self.scroll_y = -ridx * 25 + 5
+
+
     def update_values(self):
+        if self.scroll_y > 0:
+            self.scroll_y = 0
+        mouse_poz = pygame.mouse.get_pos()
+        if self.scrolling:
+            if self.rect.top - self.scroll_y > mouse_poz[1] + 3:
+                self.scroll_y += 5
+            elif self.rect.top - self.scroll_y < mouse_poz[1] - 3:
+                self.scroll_y -= 5
+        self.scroll_poz = self.scroll_x, self.scroll_y
         self.text = font.render(os.getcwd(), True, (255, 255, 255))
         self.text_rect = rect_border(self.text.get_rect(), 6)
-        self.text_rect.topleft = (self.rect.x + 44, self.rect.y + 2)
+        self.text_rect.topleft = (self.rect.x + 64, self.rect.y + 2)
+
     def update(self, event):
         global selected
-        if event.type == MOUSEBUTTONDOWN and event.button == 1:
-            if menu_block_creator.visible:
-                self.visible = False
-                return
-            if self.button_rect.collidepoint(pygame.mouse.get_pos()):
-                self.selected = True
-                selected = self
-                self.visible = not self.visible
+        mouse_poz = pygame.mouse.get_pos()
+        self.update_scroll(event)
+        if event.type == MOUSEBUTTONDOWN:
+            if event.button == 1:
+                try:
+                    if self.temp_idx is not None:
+                        temp_dir = os.listdir(os.getcwd())[self.temp_idx]
+                        if os.path.isdir(temp_dir):
+                            os.chdir(temp_dir)
+                            file_loader.text_win.text = ''
+                            self.temp_idx = None
+                except Exception:
+                    pass
+                if menu_block_creator.visible:
+                    self.visible = False
+                    return
+                if self.back_button_rect.collidepoint(mouse_poz):
+                    try:
+                        os.chdir('..')
+                    except Exception:
+                        print('something failed')
+                if self.button_rect.collidepoint(mouse_poz):
+                    self.selected = True
+                    selected = self
+                    self.visible = not self.visible
+                    if self.visible:
+                        file_loader.text_win.text = ''
+            elif event.button == 4:
+                if self.rect.collidepoint(mouse_poz):
+                    self.scroll_y += 10
+            elif event.button == 5:
+                if self.rect.collidepoint(mouse_poz):
+                    self.scroll_y -= 10
         elif event.type == MOUSEBUTTONUP:
             self.selected = False
+            self.scrolling = False
             if selected == self:
                 selected = None
 
@@ -743,8 +836,10 @@ while running:
     screen.fill((107, 107, 18))
     pygame.draw.rect(screen, (100, 100, 80), pygame.Rect(0, 0, 200, 2000))
     for event in pygame.event.get():
+        mouse_poz = pygame.mouse.get_pos()
         menu_block_creator.update(event)
-        file_loader.update(event)
+        if menu_block_creator.visible or file_manager.visible:
+            file_loader.update(event)
         file_manager.update(event)
         for block in blocks.copy():
             block.update(event)
@@ -767,13 +862,14 @@ while running:
                     while current.child:
                         current = current.child
                         blocks.remove(current)
-        scroll.update(event)
+        if mouse_poz[0] < 200:
+            scroll.update(event)
     file_manager.draw()
     for block in reversed(blocks):
         block.draw()
     scroll.draw()
     menu_block_creator.draw()
-    if menu_block_creator.visible:
+    if menu_block_creator.visible or file_manager.visible:
         file_loader.draw()
     pygame.display.flip()
     clock.tick(60)
