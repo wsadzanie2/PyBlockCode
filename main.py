@@ -588,7 +588,8 @@ class FileManager:
         if -self.scroll_y + self.rect.top < self.rect.height + 55:
             pygame.draw.circle(screen, (255, 255, 255), (self.scroll_x + self.rect.left + 5, -self.scroll_y + self.rect.top + 5), 2)
         else:
-            pygame.draw.circle(screen, (255, 255, 255), (self.scroll_x + self.rect.left + 5, self.rect.height + 55), 2)
+            pygame.draw.circle(screen, (0, 0, 0), (self.scroll_x + self.rect.left + 5, self.rect.height + 55), 4)
+            pygame.draw.circle(screen, (255, 0, 0), (self.scroll_x + self.rect.left + 5, self.rect.height + 55), 2)
 
     def update_scroll(self, event):
         if event.type == MOUSEBUTTONDOWN and event.button == 1:
@@ -643,9 +644,10 @@ class FileManager:
             self.scroll_y = 0
         mouse_poz = pygame.mouse.get_pos()
         if self.scrolling:
-            if self.rect.top - self.scroll_y > mouse_poz[1] + 3:
+            important_value = self.rect.top - self.scroll_y
+            if mouse_poz[1] + 3 < important_value and mouse_poz[1] < self.rect.bottom:
                 self.scroll_y += 5
-            elif self.rect.top - self.scroll_y < mouse_poz[1] - 3:
+            elif important_value < mouse_poz[1] - 3 or mouse_poz[1] > self.rect.bottom:
                 self.scroll_y -= 5
         self.scroll_poz = self.scroll_x, self.scroll_y
         self.text = font.render(os.getcwd(), True, (255, 255, 255))
