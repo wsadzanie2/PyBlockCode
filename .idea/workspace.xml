@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Added a new button that shows the current working directiory. (Needs to be worked on!)">
+    <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Made the file manager scroll better!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blocks.py" beforeDir="false" afterPath="$PROJECT_DIR$/Blocks.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -114,14 +115,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1687800228992</updated>
-    </task>
-    <task id="LOCAL-00005" summary="This is my PyBlock project. It will allow childs to learn programming quicker!">
-      <option name="closed" value="true" />
-      <created>1691356172734</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1691356172734</updated>
     </task>
     <task id="LOCAL-00006" summary="This is my PyBlock project. It will allow childs to learn programming quicker!">
       <option name="closed" value="true" />
@@ -507,7 +500,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693415203561</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Made the file manager scroll better!">
+      <option name="closed" value="true" />
+      <created>1693594766621</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1693594766621</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -522,7 +523,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added basic support for pygame with pygame-blocks.py and made it easier to load other blocks" />
     <MESSAGE value="Expanded the pygame-blocks &quot;plugin&quot;" />
     <MESSAGE value="Fixed some errors!" />
     <MESSAGE value="Fixed some errors, expanded the pygame-blocks &quot;plugin&quot;" />
@@ -547,6 +547,7 @@
     <MESSAGE value="Fixed some errors. Now it's possible to load all python files" />
     <MESSAGE value="Now 2 modules will be added by default" />
     <MESSAGE value="Added a new button that shows the current working directiory. (Needs to be worked on!)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a new button that shows the current working directiory. (Needs to be worked on!)" />
+    <MESSAGE value="Made the file manager scroll better!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made the file manager scroll better!" />
   </component>
 </project>

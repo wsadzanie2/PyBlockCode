@@ -45,6 +45,24 @@ def count_spaces(string):
             return i
 
 
+def sort_function(e):
+    e = e.lower()
+    last_list = ['.']
+    ret_value = 0
+    if e[0] in last_list:
+        ret_value += 255
+    if len(e) > 1:
+        return ret_value + ord(e[0]) + sort_function(e[1:]) / 250
+    return ret_value + ord(e[0])
+
+
+def listdir(directory, should_sort=True, sf=sort_function):
+    ret_value = os.listdir(directory)
+    if should_sort:
+        ret_value.sort(key=sf)
+    return ret_value
+
+
 def load_file(file):
     loaded_file_list = []
     with open(file, 'r') as f:
@@ -584,9 +602,11 @@ class FileManager:
         self.temp_idx = None
 
     def draw_scroll(self):
-        pygame.draw.line(screen, (0, 0, 0), (self.rect.left + 5, self.rect.top + 5), (self.rect.left + 5, self.rect.bottom - 5), 2)
+        pygame.draw.line(screen, (0, 0, 0), (self.rect.left + 5, self.rect.top + 5),
+                         (self.rect.left + 5, self.rect.bottom - 5), 2)
         if -self.scroll_y + self.rect.top < self.rect.height + 55:
-            pygame.draw.circle(screen, (255, 255, 255), (self.scroll_x + self.rect.left + 5, -self.scroll_y + self.rect.top + 5), 2)
+            pygame.draw.circle(screen, (255, 255, 255),
+                               (self.scroll_x + self.rect.left + 5, -self.scroll_y + self.rect.top + 5), 2)
         else:
             pygame.draw.circle(screen, (0, 0, 0), (self.scroll_x + self.rect.left + 5, self.rect.height + 55), 4)
             pygame.draw.circle(screen, (255, 0, 0), (self.scroll_x + self.rect.left + 5, self.rect.height + 55), 2)
@@ -596,12 +616,10 @@ class FileManager:
             if self.scroll_rect.collidepoint(pygame.mouse.get_pos()):
                 self.scrolling = True
 
-
-
     def draw(self):
         self.update_values()
         if self.visible:
-            pygame.draw.rect(screen, (0, 0, 255), self.rect)
+            pygame.draw.rect(screen, (0, 0, 255), self.rect, 0, 15)
             pygame.draw.rect(screen, (25, 25, 25), self.text_rect)
             screen.blit(self.text, (self.rect.x + 70, self.rect.y + 5))
             self.draw_tree()
@@ -611,11 +629,9 @@ class FileManager:
         pygame.draw.rect(screen, (0, 0, 0), self.button_rect)
         pygame.draw.rect(screen, (0, 255, 0), rect_border(self.button_rect, -3))
 
-
-
     def draw_tree(self):
         ridx = 0
-        for idx, thingy in enumerate(os.listdir(os.getcwd())):
+        for idx, thingy in enumerate(listdir(os.getcwd())):
             ridx += 1
             if file_loader.text_win.text not in thingy:
                 ridx -= 1
@@ -623,21 +639,22 @@ class FileManager:
             if abs(self.scroll_y // 25) > ridx or (abs(self.scroll_y) + self.rect.height) // 25 < ridx + 3:
                 continue
             self.temp_rect = pygame.Rect((self.rect.x + 10, self.rect.y + self.scroll_y + 50 + ridx * 25),
-                                    (self.rect.width - 10, 25))
+                                         (self.rect.width - 10, 25))
             if self.temp_rect.collidepoint(pygame.mouse.get_pos()):
                 pygame.draw.rect(screen, (0, 0, 0), self.temp_rect)
                 self.temp_idx = idx
             elif self.temp_idx == ridx:
                 self.temp_idx = None
             if os.path.isdir(thingy):
-                screen.blit(self.font.render(thingy, True, (255, 255, 255)), (self.rect.x + 10, self.rect.y + self.scroll_y + 50 + ridx * 25))
+                screen.blit(self.font.render(thingy, True, (255, 255, 255)),
+                            (self.rect.x + 10, self.rect.y + self.scroll_y + 50 + ridx * 25))
             else:
-                screen.blit(self.font.render(thingy, True, (0, 255, 0)), (self.rect.x + 10, self.rect.y + self.scroll_y + 50 + ridx * 25))
+                screen.blit(self.font.render(thingy, True, (0, 255, 0)),
+                            (self.rect.x + 10, self.rect.y + self.scroll_y + 50 + ridx * 25))
         if ridx < 3 and not self.scrolling:
             self.scroll_y = -20
         if self.scroll_y < ridx * -25 + 5:
             self.scroll_y = -ridx * 25 + 5
-
 
     def update_values(self):
         if self.scroll_y > 0:
@@ -662,9 +679,10 @@ class FileManager:
             if event.button == 1:
                 try:
                     if self.temp_idx is not None:
-                        temp_dir = os.listdir(os.getcwd())[self.temp_idx]
+                        temp_dir = listdir(os.getcwd())[self.temp_idx]
                         if os.path.isdir(temp_dir):
                             os.chdir(temp_dir)
+                            self.scroll_y = 0
                             file_loader.text_win.text = ''
                             self.temp_idx = None
                 except Exception:
