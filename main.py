@@ -52,7 +52,7 @@ def sort_function(e):
     if e[0] in last_list:
         ret_value += 255
     if len(e) > 1:
-        return ret_value + ord(e[0]) + sort_function(e[1:]) / 250
+        return ret_value + ord(e[0]) + (sort_function(e[1:]) / 250)
     return ret_value + ord(e[0])
 
 
@@ -576,6 +576,7 @@ class FileLoader:
             self.selected = False
         if selected == self:
             self.text_win.update(event)
+
 
 
 class FileManager:

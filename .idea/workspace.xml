@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6dfaf2d0-c59f-4669-a163-72382ee26140" name="Changes" comment="Made the file manager scroll better!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blocks.py" beforeDir="false" afterPath="$PROJECT_DIR$/Blocks.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
