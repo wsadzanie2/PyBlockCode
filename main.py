@@ -795,6 +795,12 @@ class CodeBlock:
         global selected
         if event.type == MOUSEBUTTONDOWN:
             if self.rect.collidepoint(pygame.mouse.get_pos()):
+                if event.button == 2:
+                    new_block = CodeBlock(self.rect.x, self.rect.y, self.width, self.height, self.color, self.text, self.command, self.arguments, self.tabs_increase)
+                    selected = new_block
+                    new_block.dragging = True
+                    self.dragging = False
+                    return
                 self.dragging = True
                 selected = self
             elif selected == self:
