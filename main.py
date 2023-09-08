@@ -675,6 +675,15 @@ class FileManager:
     def update(self, event):
         global selected
         mouse_poz = pygame.mouse.get_pos()
+        if not self.visible:
+            if event.type == MOUSEBUTTONDOWN:
+                if self.button_rect.collidepoint(mouse_poz):
+                    self.selected = True
+                    selected = self
+                    self.visible = not self.visible
+                    if self.visible:
+                        file_loader.text_win.text = ''
+            return
         self.update_scroll(event)
         if event.type == MOUSEBUTTONDOWN:
             if event.button == 1:
@@ -686,6 +695,8 @@ class FileManager:
                             self.scroll_y = 0
                             file_loader.text_win.text = ''
                             self.temp_idx = None
+                        else:
+                            load_file(temp_dir)
                 except Exception:
                     pass
                 if menu_block_creator.visible:
