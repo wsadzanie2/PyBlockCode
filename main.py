@@ -829,7 +829,7 @@ class CodeBlock:
             child = self.child
         if child is None:
             if self.tabs_increase < 0 and self.parent is not None:
-                self.rect.x -= 10
+                self.rect.x = self.parent.rect.x - 10
             return
         child.rect.midtop = self.rect.midbottom
         if self.tabs_increase > 0:
